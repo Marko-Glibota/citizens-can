@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_151330) do
+ActiveRecord::Schema.define(version: 2021_02_22_154219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,15 @@ ActiveRecord::Schema.define(version: 2021_02_22_151330) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "zip"
+    t.string "city"
+    t.integer "age"
+    t.bigint "representative_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["representative_id"], name: "index_users_on_representative_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_151330) do
   add_foreign_key "comments", "users"
   add_foreign_key "representatives_votes", "laws"
   add_foreign_key "representatives_votes", "representatives"
+  add_foreign_key "users", "representatives"
   add_foreign_key "users_votes", "laws"
   add_foreign_key "users_votes", "users"
 end
