@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_115217) do
+ActiveRecord::Schema.define(version: 2021_02_23_121346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_115217) do
     t.string "last_name"
     t.string "salutation"
     t.string "email"
-    t.string "circonscription_ref"
-    t.string "circonscription_num"
     t.string "city"
     t.string "department"
     t.string "region"
@@ -61,6 +59,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_115217) do
     t.integer "hemicycle_seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "district_num"
+    t.bigint "district_id", null: false
+    t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
   create_table "representatives_votes", force: :cascade do |t|
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_115217) do
 
   add_foreign_key "comments", "laws"
   add_foreign_key "comments", "users"
+  add_foreign_key "representatives", "districts"
   add_foreign_key "representatives_votes", "laws"
   add_foreign_key "representatives_votes", "representatives"
   add_foreign_key "users", "representatives"
