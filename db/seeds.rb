@@ -21,4 +21,17 @@ url = "https://static.data.gouv.fr/resources/carte-des-circonscriptions-legislat
 districts_serialized = open(url).read
 districts = JSON.parse(districts_serialized)
 
-puts districts["features"].first["geometry"]["coordinates"]
+# puts districts["features"].first["geometry"]["coordinates"]
+
+districts.each do |district|
+  district = District.new(
+    department_code: district["features"].first["properties"]["code_dpt"],
+    department_name: districts["features"].first["properties"]["nom_dpt"],
+    district_num: districts["features"].first["properties"]["num_circ"],
+    district_coordinates: districts["features"].first["geometry"]["coordinates"]
+  )
+  district.save!
+end
+
+
+
