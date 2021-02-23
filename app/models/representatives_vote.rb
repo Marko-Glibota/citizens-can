@@ -1,4 +1,4 @@
-class RepresentivesVote < ApplicationRecord
+class RepresentativesVote < ApplicationRecord
   belongs_to :representative
   belongs_to :law
 
