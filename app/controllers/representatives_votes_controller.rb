@@ -1,0 +1,2 @@
+class RepresentativesVotesController < ApplicationController
+end
