@@ -4,8 +4,7 @@ class CreateDistricts < ActiveRecord::Migration[6.0]
       t.integer :department_code
       t.string :department_name
       t.integer :district_num
-      t.string :district_coordinates
-      t.geometry :representative_id
+      t.decimal :district_coordinates
 
       t.timestamps
     end
