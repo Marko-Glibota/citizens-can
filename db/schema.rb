@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_165940) do
+ActiveRecord::Schema.define(version: 2021_02_23_202037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,19 +52,23 @@ ActiveRecord::Schema.define(version: 2021_02_23_165940) do
   create_table "representatives", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "salutation"
+    t.string "gender"
     t.string "email"
-    t.string "city"
-    t.string "department"
-    t.string "region"
-    t.string "party"
-    t.string "representative_ref"
-    t.boolean "first_election"
-    t.integer "hemicycle_seat"
+    t.string "department_name"
+    t.string "party_acronym"
+    t.string "department_code"
+    t.integer "seat_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "district_num"
     t.bigint "district_id", null: false
+    t.text "addresses", default: [], array: true
+    t.string "collaborators", default: [], array: true
+    t.string "profession"
+    t.text "url_an"
+    t.integer "id_an"
+    t.date "birth_date"
+    t.date "start_mandate"
     t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
