@@ -9,5 +9,35 @@
 @import "font-awesome";
 
 // Your CSS partials
+@import "components/banner";
+@import "components/buttons";
+@import "components/feature_card";
+@import "components/headings";
 @import "components/index";
+@import "components/search_bar";
 @import "pages/index";
+
+body {
+  margin: 0;
+  font-size: 16px;
+  color: #000000b3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+ }
+
+ header {
+  background-image: linear-gradient(to bottom left, #f38181, #EED489), url("../images/colonnade-assemblee_nationale.jpg");
+  background-size: cover;
+ }
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.presentation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

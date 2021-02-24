@@ -1,0 +1,29 @@
+.btn-orange {
+  background: linear-gradient( to right, #f38181, #EED489);
+  background-size: 150% 100%;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 28px;
+  transition: all .5s ease;
+}
+
+.btn-orange:hover {
+  background-position: 100% 0;
+  color: #fff;
+}
+
+.btn-search {
+  background: lightgrey;
+  padding: 17px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 28px;
+  border: none;
+  margin-left: -82px;
+}
+
+.btn-search:hover {
+  background: lightgrey;
+  color: #fff;
+}
