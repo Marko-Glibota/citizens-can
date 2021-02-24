@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :comments
   has_many :users_votes
+  belongs_to :district, optional: true
 
   validates :email, :password, :first_name, :last_name, :city, :address, :age, :zip, presence: true
   validates :zip, :age, numericality: { only_integer: true }
