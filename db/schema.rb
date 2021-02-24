@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_155851) do
     t.string "collaborators", default: [], array: true
     t.string "profession"
     t.text "url_an"
-    t.integer "id_an"
+    t.integer "id_an "
     t.date "birth_date"
     t.date "start_mandate"
     t.string "district_ref"
