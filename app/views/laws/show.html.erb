@@ -4,3 +4,11 @@
 <%= @law.description %><br>
 <%= @law.url %><br>
 <%= @law.source %><br>
+
+<div id="like-count">
+  <%= render 'shared/likes', law: @law %>
+</div>
+
+<div id="like-link">
+  <%= render 'shared/like_link', law: @law %>
+</div>
