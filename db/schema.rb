@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_202037) do
+ActiveRecord::Schema.define(version: 2021_02_24_130444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,10 @@ ActiveRecord::Schema.define(version: 2021_02_23_202037) do
     t.string "collaborators", default: [], array: true
     t.string "profession"
     t.text "url_an"
-    t.integer "id_an"
+    t.string "id_an"
     t.date "birth_date"
     t.date "start_mandate"
+    t.string "district_ref"
     t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
