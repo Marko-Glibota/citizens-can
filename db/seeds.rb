@@ -32,11 +32,12 @@ require 'csv'
 #   district.save!
 # end
 
-#Creer une nouvelle instance de loi
+# Creer une nouvelle instance de loi
 
 require 'open-uri'
 require 'nokogiri'
 
+# PROJETS DE LOIS
 url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
 html_file = open(url).read
 doc = Nokogiri::HTML(html_file)
@@ -49,7 +50,27 @@ doc.search('.liens-liste li').each do |law|
   law = Law.new(
     title: title,
     description: description,
-    url: url)
+    url: url,
+    source: "projet")
+
+  law.save
+end
+
+# PROPOSITIONS DE LOIS
+url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/propositions-loi'
+html_file = open(url).read
+doc = Nokogiri::HTML(html_file)
+
+doc.search('.liens-liste li').each do |law|
+  title = law.search('h3').text
+  description = law.search('p').text
+  url = law.search('a').attribute('href')
+
+  law = Law.new(
+    title: title,
+    description: description,
+    url: url,
+    source: "proposition")
 
   law.save
 end
