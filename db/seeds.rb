@@ -1,21 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or newd alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.new([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.new(name: 'Luke', movie: movies.first)
-
 
 require 'json'
 require 'open-uri'
+require 'csv'
 require 'date'
-
+require 'nokogiri'
 
 puts "Destruction de la database"
+
+Law.destroy_all
 Representative.destroy_all
 District.destroy_all
-  
+
+#Création district
 
 url = "https://static.data.gouv.fr/resources/carte-des-circonscriptions-legislatives-2012-et-2017/20170721-135742/france-circonscriptions-legislatives-2012.json"
 districts_serialized = open(url).read
@@ -41,7 +37,6 @@ districts["features"].each do |district|
   puts "Création d'une circonscription"
   district.save!
 end
-
 
 
 url = "https://www.nosdeputes.fr/deputes/enmandat/json"
@@ -90,7 +85,44 @@ representatives["deputes"].each do |representative|
   representative_instance.district = District.where(district_num: representative_instance[:district_num]).where("lower(department_name) = ? ", department_name ).first
   puts "Création d'un député"
   representative_instance.save!
-      
+end
+
+# PROJETS DE LOIS
+url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
+html_file = open(url).read
+doc = Nokogiri::HTML(html_file)
+  
+doc.search('.liens-liste li').each do |law|
+  title = law.search('h3').text
+  description = law.search('p').text
+  url = law.search('a').attribute('href')
+
+  law = Law.new(
+    title: title,
+    description: description,
+    url: url,
+    source: "projet")
+
+  law.save
+end
+
+# PROPOSITIONS DE LOIS
+url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/propositions-loi'
+html_file = open(url).read
+doc = Nokogiri::HTML(html_file)
+
+doc.search('.liens-liste li').each do |law|
+  title = law.search('h3').text
+  description = law.search('p').text
+  url = law.search('a').attribute('href')
+
+  law = Law.new(
+    title: title,
+    description: description,
+    url: url,
+    source: "proposition")
+
+  law.save
 end
 
 

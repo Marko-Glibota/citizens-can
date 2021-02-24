@@ -1,9 +1,11 @@
 <h1>Laws</h1>
 
-<ul>
-  <% @laws.each do |law| %>
-    <li><%= law.num %></li>
-    <li><%= law.title %></li>
-    <li><%= law.description %></li>
+<% @laws.each do |law| %>
+  <%= link_to law_path(law) do %>
+    <div class="law-card">
+      <h3><%= law.title %></h3>
+      <p><%= law.description %></p>
+      <p><%= law.source %></p>
+    </div>
   <% end %>
-</ul>
+<% end %>
