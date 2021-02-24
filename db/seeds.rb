@@ -38,38 +38,46 @@ require 'open-uri'
 require 'nokogiri'
 
 # PROJETS DE LOIS
-url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
-html_file = open(url).read
+url_proj = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
+html_file = open(url_proj).read
 doc = Nokogiri::HTML(html_file)
 
 doc.search('.liens-liste li').each do |law|
   title = law.search('h3').text
   description = law.search('p').text
-  url = law.search('a').attribute('href')
+  puts details = law.search('a').attribute('href')
+  binding.pry
 
-  law = Law.new(
-    title: title,
-    description: description,
-    url: url,
-    source: "projet")
+  html_file = open(details).read
+  doc = Nokogiri::HTML(html_file)
+
+
+  doc.search('.liens-liste li').each do |law|
+
+    law = Law.new(
+      title: title,
+      description: description,
+      url: details,
+      source: "projet")
 
   law.save
+  end
 end
 
 # PROPOSITIONS DE LOIS
-url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/propositions-loi'
-html_file = open(url).read
+url_prop = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/propositions-loi'
+html_file = open(url_prop).read
 doc = Nokogiri::HTML(html_file)
 
 doc.search('.liens-liste li').each do |law|
   title = law.search('h3').text
   description = law.search('p').text
-  url = law.search('a').attribute('href')
+  details = law.search('a').attribute('href')
 
   law = Law.new(
     title: title,
     description: description,
-    url: url,
+    url: details,
     source: "proposition")
 
   law.save
