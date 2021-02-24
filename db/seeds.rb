@@ -41,12 +41,17 @@ url = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
 html_file = open(url).read
 doc = Nokogiri::HTML(html_file)
 
-binding.pry
+doc.search('.liens-liste li').each do |law|
+  title = law.search('h3').text
+  description = law.search('p').text
+  url = law.search('a').attribute('href')
 
-laws_titles = []
-laws_titles = doc.css('.liens-liste').css('li').css('h3')
-laws_titles.each do |law|
-  law
+  law = Law.new(
+    title: title,
+    description: description,
+    url: url)
+
+  law.save
 end
 
 
