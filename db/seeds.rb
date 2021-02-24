@@ -37,32 +37,6 @@ require 'csv'
 require 'open-uri'
 require 'nokogiri'
 
-# PROJETS DE LOIS
-url_proj = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
-html_file = open(url_proj).read
-doc = Nokogiri::HTML(html_file)
-
-doc.search('.liens-liste li').each do |law|
-  title = law.search('h3').text
-  description = law.search('p').text
-  puts details = law.search('a').attribute('href')
-  binding.pry
-
-  html_file = open(details).read
-  doc = Nokogiri::HTML(html_file)
-
-
-  doc.search('.liens-liste li').each do |law|
-
-    law = Law.new(
-      title: title,
-      description: description,
-      url: details,
-      source: "projet")
-
-  law.save
-  end
-end
 
 # PROPOSITIONS DE LOIS
 url_prop = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/propositions-loi'
@@ -72,7 +46,13 @@ doc = Nokogiri::HTML(html_file)
 doc.search('.liens-liste li').each do |law|
   title = law.search('h3').text
   description = law.search('p').text
-  details = law.search('a').attribute('href')
+  details << law.search('a').attribute('href')
+
+  # html_file = open(details).read
+  # doc = Nokogiri::HTML(html_file)
+  
+  # doc.search('.liens-liste li').each do |law|
+  # binding.pry
 
   law = Law.new(
     title: title,
@@ -84,3 +64,21 @@ doc.search('.liens-liste li').each do |law|
 end
 
 
+# PROJETS DE LOIS
+url_proj = 'https://www2.assemblee-nationale.fr/documents/liste/(type)/projets-loi'
+html_file = open(url_proj).read
+doc = Nokogiri::HTML(html_file)
+
+doc.search('.liens-liste li').each do |law|
+  title = law.search('h3').text
+  description = law.search('p').text
+  details = law.search('a').attribute('href')
+
+  law = Law.new(
+    title: title,
+    description: description,
+    url: details,
+    source: "projet")
+
+  law.save
+end
