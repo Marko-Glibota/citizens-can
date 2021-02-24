@@ -2,8 +2,8 @@
 
 <ul>
   <% @laws.each do |law| %>
-    <li><%= law.num %></li>
     <li><%= law.title %></li>
     <li><%= law.description %></li>
+    <li><%= @law.url %></li>
   <% end %>
 </ul>
