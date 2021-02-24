@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_151123) do
     t.string "status"
     t.string "theme"
     t.text "url"
+    t.string "source"
   end
 
   create_table "representatives", force: :cascade do |t|
