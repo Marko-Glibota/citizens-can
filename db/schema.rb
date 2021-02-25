@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_131516) do
+ActiveRecord::Schema.define(version: 2021_02_25_135608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2021_02_25_131516) do
     t.string "id_an"
     t.date "birth_date"
     t.date "start_mandate"
+    t.bigint "district_id", null: false
+    t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
   create_table "representatives_votes", force: :cascade do |t|

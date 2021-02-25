@@ -1,11 +1,29 @@
-<h1>Laws</h1>
+<div class="banner_pages">
+  <%= render 'shared/navbar' %>
+  <h1>Laws</h1>
+</div>
 
 <% @laws.each do |law| %>
+
   <%= link_to law_path(law) do %>
     <div class="law-card">
       <h3><%= law.title %></h3>
       <p><%= law.description %></p>
       <p><%= law.source %></p>
+
+      <div class="votes">
+          <%= link_to like_law_path(law), class: "like", method: :put do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-up"></i>  <%= law.get_upvotes.size %>
+          </div>
+          <% end %>
+
+          <%= link_to unlike_law_path(law), class: "like", method: :put do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-down"></i>  <%= law.get_downvotes.size %>
+         </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>
