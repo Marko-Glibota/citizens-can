@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       put "like" => "laws#upvote"
       put "unlike" => "laws#downvote"
+      put "for" => "laws#for"
+      put "against" => "laws#against"
     end
     resources :comments, only: [:new, :create]
     resources :users_votes, only: [:new, :create]
