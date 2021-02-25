@@ -21,13 +21,13 @@ class LawsController < ApplicationController
   end
 
   def for
-    @law.upvote_from @current_user
-    redirect_to law_path(law)
+    @law.upvote_from current_user
+    redirect_to law_path(@law)
   end
 
   def against
     @law.downvote_from current_user
-    redirect_to law_path(law)
+    redirect_to law_path(@law)
   end
 
   private
