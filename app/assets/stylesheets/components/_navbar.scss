@@ -11,7 +11,7 @@ nav {
   align-items: center;
 }
 
-.menu p {
+.menu p, .menu a {
   font-size: 16px;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
@@ -19,6 +19,12 @@ nav {
   margin-bottom: 0;
   font-weight: 200;
   text-transform: uppercase;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: none;
+  color: #f9f9f9;
 }
 
 #logo {
