@@ -45,22 +45,32 @@ doc = Nokogiri::HTML(html_file)
 
 doc.search('.liens-liste li').each do |law|
   title = law.search('h3').text
+  num = title.match(/N° \d+/)[1]
   description = law.search('p').text
-  details << law.search('a').attribute('href')
-
-  # html_file = open(details).read
-  # doc = Nokogiri::HTML(html_file)
+  details = law.search('a').attribute('href').value
   
-  # doc.search('.liens-liste li').each do |law|
-  # binding.pry
+  html_file = open(details).read
+  doc = Nokogiri::HTML(html_file)
+  
+  doc.search('.carrousel-auteurs-rapporteurs').each do |law|
+    rapporteur_link = law.search('.nom-personne a').attribute('href').value
+    rapporteur_id = rapporteur_link.match(/PA\d+/)[1]
+    rapporteur_name = law.search('.nom-personne a').text
+    binding.pry
 
-  law = Law.new(
-    title: title,
-    description: description,
-    url: details,
-    source: "proposition")
+    law = Law.new(
+      num: num,
+      title: title, 
+      description: description,
+      url: details,
+      source: "proposition",
+      id_an: rapporteur_id,
+      representative_id: representative.where[:id_an law.id_an]
+      )
+    law.
 
   law.save
+  end
 end
 
 
