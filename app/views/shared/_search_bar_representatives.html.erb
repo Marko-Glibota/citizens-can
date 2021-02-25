@@ -1,4 +1,8 @@
-<form action="#">
-  <input type="text" placeholder="Ton adresse postale..." class="search-bar">
-  <input type="submit" value="Chercher" class="btn-search">
-</form>
+<%= form_tag search_representatives_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "searchbar",
+    placeholder: "Entrez votre adresse postale..."
+  %>
+  <%= submit_tag "Search", class: "btn-search" %>
+<% end %>
