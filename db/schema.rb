@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_170316) do
+ActiveRecord::Schema.define(version: 2021_02_25_131516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
     t.string "theme"
     t.text "url"
     t.string "source"
+    t.string "id_an"
+    t.string "author_type"
+    t.string "author"
   end
 
   create_table "representatives", force: :cascade do |t|
@@ -62,7 +65,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "district_num"
-    t.bigint "district_id", null: false
     t.text "addresses", default: [], array: true
     t.string "collaborators", default: [], array: true
     t.string "profession"
@@ -70,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
     t.string "id_an"
     t.date "birth_date"
     t.date "start_mandate"
-    t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
   create_table "representatives_votes", force: :cascade do |t|
@@ -131,7 +132,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
 
   add_foreign_key "comments", "laws"
   add_foreign_key "comments", "users"
-  add_foreign_key "representatives", "districts"
   add_foreign_key "representatives_votes", "laws"
   add_foreign_key "representatives_votes", "representatives"
   add_foreign_key "users_votes", "laws"

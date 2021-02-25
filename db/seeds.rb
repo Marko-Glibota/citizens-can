@@ -103,9 +103,9 @@ doc.search('.liens-liste li').each do |law|
   doc = Nokogiri::HTML(html_file)
   
   doc.search('.carrousel-auteurs-rapporteurs').each do |law|
-    rapporteur_link = law.search('.nom-personne a').attribute('href').value
-    rapporteur_id = rapporteur_link.match(/PA\d+/)[1]
-    rapporteur_name = law.search('.nom-personne a').text
+    auteur_link = law.search('.nom-personne a').attribute('href').value
+    auteur_id = auteur_link.match(/PA\d+/)[1]
+    auteur_name = law.search('.nom-personne a').text
     binding.pry
 
     law = Law.new(
@@ -113,9 +113,11 @@ doc.search('.liens-liste li').each do |law|
       title: title, 
       description: description,
       url: details,
-      source: "proposition",
-      id_an: rapporteur_id,
-      representative_id: representative.where[:id_an law.id_an]
+      source: "Proposition",
+      author_type: "Auteur",
+      author: auteur_name,
+      id_an: auteur_id,
+      representative_id: Representative.where(id_an: law.id_an)
       )
     law.
 
@@ -134,12 +136,29 @@ doc.search('.liens-liste li').each do |law|
   description = law.search('p').text
   details = law.search('a').attribute('href')
 
-  law = Law.new(
-    title: title,
-    description: description,
-    url: details,
-    source: "projet")
+  html_file = open(details).read
+  doc = Nokogiri::HTML(html_file)
+  
+  doc.search('.carrousel-auteurs-rapporteurs').each do |law|
+    rapporteur_link = law.search('.nom-personne a').attribute('href').value
+    rapporteur_id = rapporteur_link.match(/PA\d+/)[1]
+    rapporteur_name = law.search('.nom-personne a').text
+    binding.pry
+
+    law = Law.new(
+      num: num,
+      title: title, 
+      description: description,
+      url: details,
+      source: "Projet",
+      author_type: "Rapporteur",
+      author: auteur_name,
+      id_an: rapporteur_id,
+      representative_id: Representative.where(id_an: law.id_an)
+      )
+    law.
 
   law.save
+  end
 end
 
