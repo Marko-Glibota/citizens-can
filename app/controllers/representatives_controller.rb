@@ -4,10 +4,9 @@ class RepresentativesController < ApplicationController
   end
 
   def search
-    @address = params
+    @address = params[:search][:address]
     results = Geocoder.search(@address)
-    results.first.coordinates
-=> [48.856614, 2.3522219]  # latitude and longitude
+    @coordinates = results.first.coordinates
     redirect_to root_path
   end
 end
