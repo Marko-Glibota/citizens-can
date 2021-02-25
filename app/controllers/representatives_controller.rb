@@ -4,6 +4,7 @@ class RepresentativesController < ApplicationController
   end
 
   def search
-    
+    @address = params
+    redirect_to root_path
   end
 end
