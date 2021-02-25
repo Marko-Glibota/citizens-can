@@ -12,15 +12,15 @@
 
 
 <div class="votes">
-  <%= link_to like_law_path(@law), class: "like", method: :put do %>
+  <%= link_to for_law_path(@law), class: "like", method: :put do %>
   <div class="btn-like">
-    <i class="far fa-thumbs-up">POUR</i>  <%= @law.get_upvotes.size %>
+    <i class="far fa-thumbs-up"></i> Pour <%= @law.get_upvotes.size %>
   </div>
   <% end %>
 
-  <%= link_to unlike_law_path(@law), class: "like", method: :put do %>
+  <%= link_to against_law_path(@law), class: "like", method: :put do %>
   <div class="btn-like">
-    <i class="far fa-thumbs-down">CONTRE</i>  <%= @law.get_downvotes.size %>
+    <i class="far fa-thumbs-down"></i> Contre <%= @law.get_downvotes.size %>
   </div>
   <% end %>
 </div>
