@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_170316) do
+ActiveRecord::Schema.define(version: 2021_02_25_135608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "district_num"
-    t.bigint "district_id", null: false
     t.text "addresses", default: [], array: true
     t.string "collaborators", default: [], array: true
     t.string "profession"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_170316) do
     t.string "id_an"
     t.date "birth_date"
     t.date "start_mandate"
+    t.bigint "district_id", null: false
     t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
