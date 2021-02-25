@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   end
   resources :laws, only: [:index, :show] do
     member do
-      put 'like' => 'laws#like'
+      put "like" => "laws#upvote"
+      put "unlike" => "laws#downvote"
     end
     resources :comments, only: [:new, :create]
     resources :users_votes, only: [:new, :create]

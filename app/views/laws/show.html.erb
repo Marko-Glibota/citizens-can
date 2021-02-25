@@ -5,10 +5,17 @@
 <%= @law.url %><br>
 <%= @law.source %><br>
 
-<div id="like-count">
-  <%= render 'shared/likes', law: @law %>
-</div>
 
-<div id="like-link">
-  <%= render 'shared/like_link', law: @law %>
+<div class="votes">
+  <%= link_to like_law_path(@law), class: "like", method: :put do %>
+  <div class="btn-like">
+    <i class="far fa-thumbs-up">POUR</i>  <%= @law.get_upvotes.size %>
+  </div>
+  <% end %>
+
+  <%= link_to unlike_law_path(@law), class: "like", method: :put do %>
+  <div class="btn-like">
+    <i class="far fa-thumbs-down">CONTRE</i>  <%= @law.get_downvotes.size %>
+  </div>
+  <% end %>
 </div>

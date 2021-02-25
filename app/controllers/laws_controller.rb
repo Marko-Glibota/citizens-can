@@ -1,5 +1,6 @@
 class LawsController < ApplicationController
-  before_action :authenticate_user!, only: [:like]
+  before_action :set_law, only: [:show, :upvote, :downvote]
+  before_action :authenticate_user!, only: [:upvote, :downvote]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -7,14 +8,21 @@ class LawsController < ApplicationController
   end
 
   def show
-    @law = Law.find(params[:id])
   end
 
-  def like
-    if current_user.voted_for? @law
-      @law.unliked_by current_user
-    else
-      @law.liked_by current_user
-    end
+  def upvote
+    @law.upvote_from current_user
+    redirect_to laws_path
+  end
+
+  def downvote
+    @law.downvote_from current_user
+    redirect_to laws_path
+  end
+
+  private
+
+  def set_law
+    @law = Law.find(params[:id])
   end
 end

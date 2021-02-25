@@ -1,2 +1,0 @@
-<%= vote_text = current_user&.voted_for?(law) ? "Contre" : "Pour" %>
-<%= link_to vote_text, like_law_path(law), method: :put, remote: :true, class: 'like-post' %>
