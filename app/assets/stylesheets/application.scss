@@ -27,3 +27,14 @@ body {
   margin: 0 auto;
   padding-top: 30px;
 }
+
+.presentation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like:hover {
+ text-decoration: none;
+}
+
