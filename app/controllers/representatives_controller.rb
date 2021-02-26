@@ -10,6 +10,8 @@ class RepresentativesController < ApplicationController
   def show
     @representative = Representative.find(params[:id])
     @name = "#{@representative.first_name} #{@representative.last_name}"
+    @years_old = Date.today.year - @representative.birth_date.year
+    @laws = Law.all
     scrapping
   end
 
