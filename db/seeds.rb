@@ -59,7 +59,8 @@ districts = JSON.parse(districts_serialized)
       birth_date: representative["depute"]["date_naissance"],
       profession: representative["depute"]["profession"],
       url_an: representative["depute"]["url_an"],
-      id_an: id_pa  
+      id_an: id_pa ,
+      slug: representative["depute"]["slug"] 
     )
 
     if representative["depute"]["emails"] == []
