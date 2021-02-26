@@ -21,12 +21,23 @@
   text-decoration: none;
   border-radius: 28px;
   border: none;
-  margin-left: -50px;
 }
 
 .btn-search:hover {
   background: lightgrey;
   color: #fff;
+}
+
+.btn-search-laws {
+  background: lightgrey;
+  padding: 16px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 28px;
+  border: none;
+  position: absolute;
+  top: 41px;
+  right: 0px;
 }
 
 .btn-like {

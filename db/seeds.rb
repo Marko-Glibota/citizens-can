@@ -10,7 +10,6 @@ puts "Destruction de la database"
 Law.destroy_all
 Representative.destroy_all
 District.destroy_all
-
 #Création district
 
 url = "https://static.data.gouv.fr/resources/carte-des-circonscriptions-legislatives-2012-et-2017/20170721-135742/france-circonscriptions-legislatives-2012.json"

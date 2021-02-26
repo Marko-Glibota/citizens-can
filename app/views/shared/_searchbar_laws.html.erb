@@ -1,0 +1,8 @@
+<%= form_tag laws_path, class: 'relative', method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "searchbar-laws",
+    placeholder: "Entrez un mot-clé ou une loi..."
+  %>
+  <%= submit_tag "Cherchez", class: "btn-search-laws" %>
+<% end %>

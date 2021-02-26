@@ -5,6 +5,11 @@ class LawsController < ApplicationController
 
   def index
     @laws = Law.all
+    if params[:query].present?
+      @laws = Law.where("title ILIKE ?", "%#{params[:query]}%")
+    else
+      @laws = Law.all
+    end
   end
 
   def show
