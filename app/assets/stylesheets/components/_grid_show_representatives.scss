@@ -38,17 +38,21 @@
   margin-bottom: 10px;
   border-radius: 100px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 50%;
 }
 
 .department-district {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
   .department {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    height: 25px;
+    padding: 2px 4px 4px 4px;
   }
   .district {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    height: 25px;
+    padding: 2px 4px 4px 4px;
 
   }
 }

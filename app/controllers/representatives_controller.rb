@@ -11,8 +11,6 @@ class RepresentativesController < ApplicationController
     @representative = Representative.find(params[:id])
     @name = "#{@representative.first_name} #{@representative.last_name}"
     scrapping
-
-
   end
 
   def search

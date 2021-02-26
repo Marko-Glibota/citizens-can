@@ -1,17 +1,14 @@
- require 'json'
+require 'json'
 
- module ScrappingRepresentativeConcern
-   def scrapping
-     url = "https://www.nosdeputes.fr/#{@representative.slug}/json"
-     info_deputes_serialized = open(url).read
-     info_deputes = JSON.parse(info_deputes_serialized)
+module ScrappingRepresentativeConcern
+  def scrapping
+    url = "https://www.nosdeputes.fr/#{@representative.slug}/json"
+    info_deputes_serialized = open(url).read
+    info_deputes = JSON.parse(info_deputes_serialized)
 
-
-
-
-     url = "https://www.nosdeputes.fr/synthese/data/json"
-     activite_deputes_serialized = open(url).read
-     actitive_deputes = JSON.parse(info_deputes_serialized)
+    url = "https://www.nosdeputes.fr/synthese/data/json"
+    activite_deputes_serialized = open(url).read
+    actitive_deputes = JSON.parse(info_deputes_serialized)
 
     #  activite_deputes[0]["depute"]["nb_mandats"]
     #  activite_deputes[0]["semaines_presence"]
@@ -27,6 +24,5 @@
     #  activite_deputes[0]["propositions_signees"]
     #  activite_deputes[0]["questions_ecrites"]
     #  activite_deputes[0]["questions_orales"]
-
-   end
- end
+  end
+end
