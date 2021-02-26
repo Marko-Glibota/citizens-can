@@ -1,9 +1,20 @@
 <div class="grid-depute">
   <div class="card-photo-parti">
     <div class="card-feature">
-      <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
-      <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
+      <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/200", alt: "Le Wagon", width: 200, class: "img-photo" %>
+      <h4><%= @name %></h4>
+      <div class="department-district">
+        <div class="department">
+          <p>
+            <%= @representative.department_name %>
+          </p>
+        </div>
+        <div class="district">
+          <p>
+            <%= @representative.district_num %> ème circonscritpion
+          </p>
+        </div>
+      </div>
       <a href="#" class="btn-orange">En savoir plus</a>
     </div>
   </div>
