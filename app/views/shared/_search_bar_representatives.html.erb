@@ -1,8 +1,8 @@
 <%= form_tag search_representatives_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "searchbar",
+    class: "searchbar-representatives",
     placeholder: "Entrez votre adresse postale..."
   %>
-  <%= submit_tag "Search", class: "btn-search" %>
+  <%= submit_tag "Search", class: "btn-search margin-l-minus-50" %>
 <% end %>
