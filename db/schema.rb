@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_135608) do
+ActiveRecord::Schema.define(version: 2021_02_26_091029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_135608) do
     t.date "birth_date"
     t.date "start_mandate"
     t.bigint "district_id", null: false
+    t.string "slug"
     t.index ["district_id"], name: "index_representatives_on_district_id"
   end
 
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_135608) do
 
   add_foreign_key "comments", "laws"
   add_foreign_key "comments", "users"
+  add_foreign_key "representatives", "districts"
   add_foreign_key "representatives_votes", "laws"
   add_foreign_key "representatives_votes", "representatives"
   add_foreign_key "users_votes", "laws"

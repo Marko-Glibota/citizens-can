@@ -1,0 +1,35 @@
+.grid-depute {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.card-photo-parti {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.card-proposition-loi{
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.card-mandat-en-cours {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.card-info-sup {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.card-declaration-interest {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.card-collaborators {
+  grid-column: 3;
+  grid-row: 2;
+}
