@@ -4,8 +4,15 @@
 }
 
 .forum-card {
+  weight: 200px;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 16px 24px;
   padding: 30px 20px;
+}
+
+.forum-content {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 15px;
 }
