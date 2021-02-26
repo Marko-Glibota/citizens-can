@@ -1,26 +1,27 @@
-<div class="forum">
-  <div class="forum-card">
+<h2 class="text-center mb-5">Agora</h2>
+<div class="forum w-100">
+  <div class="forum-card w-50">
     <h3>Arguments <strong>pour</strong> </h3>
       <% @law.comments.where(voting_status: "Pour").each do |comment| %>
-      <p><%= comment.user.first_name %>
-         <%= comment.user.last_name %>
-      </p>
-
-      <%= comment.content %>
+      <p class="mb-0 mt-3 font-weight-bold"><%= comment.user.first_name.capitalize %> <%= comment.user.last_name.capitalize %></p>
+      <div class="forum-content">
+        <%= comment.content %>
+      </div>
       <% end %>
    </div>
-   <div class="forum-card">
+   <div class="forum-card w-50">
       <h3>Arguments <strong>contre</strong></h3>
       <% @law.comments.where(voting_status: "Contre").each do |comment| %>
-      <%= comment.user.first_name %>
-      <%= comment.user.last_name %>
-      <%= comment.content %>
+      <p class="mb-0 mt-3 font-weight-bold"><%= comment.user.first_name.capitalize %><%= comment.user.last_name.capitalize %></p>
+        <div class="forum-content">
+          <%= comment.content %>
+        </div>
     <% end %>
    </div>
 </div>
 
   <div class="row mt-3">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 ml-auto mr-auto">
       <div class="form-login">
         <h2>Poster un message </h2>
 
