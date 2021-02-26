@@ -3,28 +3,10 @@
   <h1>Law</h1>
 </div>
 
-<div class="container m-3">
-  <h3><%= @law.title %></h3>
-  <%= @law.description %><br>
-  <%= link_to @law.url, class: "btn-orange" %>
-  <%= @law.source %><br>
-
-
-    <div class="votes">
-      <%= link_to for_law_path(@law), class: "like", method: :put do %>
-       <div class="btn-like">
-         <i class="far fa-thumbs-up"></i> Pour <%= @law.get_upvotes.size %>
-      </div>
-      <% end %>
-
-      <%= link_to against_law_path(@law), class: "like", method: :put do %>
-        <div class="btn-like">
-          <i class="far fa-thumbs-down"></i> Contre <%= @law.get_downvotes.size %>
-        </div>
-       <% end %>
-    </div>
-  <%= render 'comments/new' %>
-</div>
+  <div class="container">
+    <%= render 'shared/law_show' %>
+    <%= render 'comments/new' %>
+  </div>
 
 
 
