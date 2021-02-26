@@ -33,3 +33,22 @@
   grid-column: 3;
   grid-row: 2;
 }
+
+.img-photo {
+  margin-bottom: 10px;
+  border-radius: 100px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.department-district {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .department {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  .district {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  }
+}
