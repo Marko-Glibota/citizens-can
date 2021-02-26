@@ -1,19 +1,17 @@
-<% @laws.each do |law| %>
-
-  <%= link_to law_path(law) do %>
-    <div class="card-law">
-      <img src="https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/travail-parlementaire/une-seance-dans-l-hemicycle-de-l-assemblee-nationale/345237-1-fre-FR/une-seance-dans-l-hemicycle-de-l-assemblee-nationale.jpg" />
-      <div class="card-law-infos">
-        <div>
-          <h4><%= law.title %></h4>
-          <p class="card-law-type"><%= law.source %></p>
-          <p><%= law.description %></p>
-        </div>
-        <div class="card-law-votes">
-          <p class="for-votes"><i class="fas fa-thumbs-up"></i> <%= law.get_upvotes.size %></p>
-          <p class="against-votes"><i class="fas fa-thumbs-down"></i> <%= law.get_downvotes.size %></p>
-        </div>
+<%= link_to law_path(law) do %>
+  <div class="card-law">
+    <img src="https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/travail-parlementaire/une-seance-dans-l-hemicycle-de-l-assemblee-nationale/345237-1-fre-FR/une-seance-dans-l-hemicycle-de-l-assemblee-nationale.jpg" />
+    <div class="card-law-infos">
+      <div>
+        <h4><%= law.title %></h4>
+        <p class="card-law-type"><%= law.source %></p>
+        <p><%= law.description %></p>
+      </div>
+      <div class="card-law-votes">
+        <p class="for-votes"><i class="fas fa-thumbs-up"></i> <%= law.get_upvotes.size %></p>
+        <p class="against-votes"><i class="fas fa-thumbs-down"></i> <%= law.get_downvotes.size %></p>
       </div>
     </div>
-  <% end %>
+  </div>
 <% end %>
+
