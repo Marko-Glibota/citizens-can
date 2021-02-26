@@ -5,7 +5,9 @@
 
 <div class="container">
   <div class="searchbar-laws-container">
-    <%= render 'shared/searchbar_laws' %>
+      <%= render 'shared/searchbar_laws' %>
   </div>
-  <%= render 'shared/card_law' %>
+  <% @laws.each do |law| %>
+    <%= render 'shared/card_law', law: law %>
+  <% end %>
 </div>
