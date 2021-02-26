@@ -41,18 +41,93 @@
   border-radius: 50%;
 }
 
-.department-district {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  .department {
-    height: 25px;
-    padding: 2px 4px 4px 4px;
-  }
-  .district {
-    height: 25px;
-    padding: 2px 4px 4px 4px;
 
+
+.card-proposition-loi {
+  .card-feature {
+    h4 {
+      margin-bottom: 10px;
+    }
+    .fas {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.card-photo-parti {
+  .card-feature {
+    h4 {
+      margin-bottom: 30px;
+    }
+    .fas {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.department-district {
+  .card-feature {
+    .fas {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 42px;
+    }
+  }
+}
+
+.card-mandat-en-cours .card-feature p {
+  margin-bottom: 42px;
+}
+
+.card-info-sup {
+  .card-feature {
+    .fas {
+      margin-bottom: 10px;
+    }
+    p {
+  margin-bottom: 30px;
+     }
+  }
+}
+
+
+.card-declaration-interest {
+  .card-feature {
+    .fas {
+      margin-bottom: 5px;
+    }
+    h4 {
+      margin-top: 5px;
+    }
+  }
+}
+
+.card-collaborators {
+  .card-feature {
+    text-align: center;
+    .fas {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 42px;
+    }
+    ul {
+      list-style: none;
+      text-align: justify;
+      margin-left: 80px;
+    }
+  }
+}
+
+
+.link-simple {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
+  :hover {
+    text-decoration: overline;
   }
 }

@@ -1,61 +1,80 @@
+
 <div class="grid-depute">
   <div class="card-photo-parti">
     <div class="card-feature">
       <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/200", alt: "Le Wagon", width: 200, class: "img-photo" %>
       <h4><%= @name %></h4>
-      <div class="department-district">
-        <div class="department">
-          <p>
-            <%= @representative.department_name %>
-          </p>
-        </div>
-        <div class="district">
-          <p>
-            <%= @representative.district_num %> ème circonscritpion
-          </p>
-        </div>
-      </div>
-      <a href="#" class="btn-orange">En savoir plus</a>
+      <p>
+        <strong>Nom du département :</strong>
+        <%= @representative.department_name %>
+      </p>
+      <p>
+        <strong>Numéro de circonscritpion</strong>
+        <%= @representative.district_num %> ème circonscritpion
+      </p>
     </div>
   </div>
   <div class="card-proposition-loi">
     <div class="card-feature">
-      <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
-      <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
-      <a href="#" class="btn-orange">En savoir plus</a>
+      <i class="fas fa-thumbs-down"></i>
+      <h4>Parti et hémicycle</h4>
+      <p>
+        <strong>Groupement politique :</strong>
+        <%= @representative.party_acronym %>
+      </p>
+      <p>
+        <strong>Place dans l'hémicycle</strong>
+        <%= @representative.seat_number %>
+      </p>
+      <a href="#" class="btn-orange">Voir les lois</a>
     </div>
   </div>
   <div class="card-mandat-en-cours">
     <div class="card-feature">
-      <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
-      <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
+      <i class="fas fa-user-tie"></i>
+      <h4>Autre profession</h4>
+      <p><%= @representative.profession %></p>
       <a href="#" class="btn-orange">En savoir plus</a>
     </div>
   </div>
   <div class="card-info-sup">
     <div class="card-feature">
-      <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
+      <i class="fas fa-info-circle"></i>
+      <h4>Informations Complémentaire</h4>
+      <p>
+        <strong>Âge :</strong>
+        <%= @years_old %>
+        ans
+      </p>
+      <p>
+        <strong>Date de Naissance :</strong>
+        <%= @representative.birth_date.strftime("%d/%m/%Y") %>
+      </p>
       <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
-      <a href="#" class="btn-orange">En savoir plus</a>
+      <a href="#" class="btn-orange">Contactez</a>
     </div>
   </div>
   <div class="card-declaration-interest">
     <div class="card-feature">
-      <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
-      <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
-      <a href="#" class="btn-orange">En savoir plus</a>
+      <i class="fas fa-file-upload"></i>
+      <h4>Déclaration d'intérêts</h4>
+      </p>
+      <a href="#" class="link-simple">Consulter la déclaration d’intérêts & d’activités de <%= @name %></a>
+      
     </div>
   </div>
   <div class="card-collaborators">
     <div class="card-feature">
       <i class="fas fa-gavel"></i>
-      <h4>Feature 1</h4>
-      <p>Lorem ipsum dolores, lorem ipsum dolores orem ipsum dolores orem ipsum dolores.</p>
-      <a href="#" class="btn-orange">En savoir plus</a>
+      <h4>Collaborateurs</h4>
+      <ul>
+        <li><%= @representative.collaborators[0]  %></li>
+        <li><%= @representative.collaborators[1]  %></li>
+        <li><%= @representative.collaborators[2]  %></li>
+        <li><%= @representative.collaborators[3]  %></li>
+        <li><%= @representative.collaborators[4]  %></li>
+        <li><%= @representative.collaborators[5] %></li>
+      </ul>
     </div>
   </div>
 </div>
