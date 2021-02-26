@@ -1,0 +1,19 @@
+.presentation-law {
+  display: flex;
+}
+
+.tag-law {
+  display: inline-block;
+  font-size: 13px;
+  border-radius: 50rem;
+  padding: 6px 17px;
+  background-color: #ffebea;
+  color: #f38181;
+  border: 1px solid #f38181;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+   &:hover {
+    text-decoration: none;
+    color:#ffebea;
+   }
+}
