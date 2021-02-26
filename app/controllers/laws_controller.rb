@@ -8,6 +8,7 @@ class LawsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def upvote

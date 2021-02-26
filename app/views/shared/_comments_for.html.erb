@@ -1,0 +1,10 @@
+<%for_comments = @comments.where(status: "for")  %>
+          <% for_comments.each do |comment|  %>
+              <div class="card-product">
+                <div class="card-product-infos">
+                    <%= comment.user.first_name  %>
+                    <%= comment.user.last_name  %>
+                    <%= comment.user.content  %>
+                </div>
+              </div>
+          <% end %>

@@ -1,0 +1,25 @@
+<div class="forum">
+  <div class="form-forum">
+    <h2>Arguments Pour </h2>
+    <h2>Arguments Contre </h2>
+  </div>
+</div>
+
+<% @law.comments.each do |comment| %>
+<%= @comment.user %><br>
+<%= @comment.content %><br>
+<% end %>
+
+
+<h2>Poster un message </h2>
+
+<%= simple_form_for [ @law, @comment ], html: {class: 'form-horizontal'} do |f| %>
+  <%= f.input :voting_status,
+              collection: Comment::VOTE,
+              label: "Tu es :",
+              as: :radio_buttons,
+              required: true,
+              autofocus: true %>
+  <%= f.input :content, label: "Ton message"%>
+  <%= f.submit "Ajouter un commentaire", class: 'btn-orange'%>
+<% end %>
