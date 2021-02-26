@@ -1,0 +1,26 @@
+<div class ="presentation-law">
+    <h2><%= @law.title %></h2>
+    <a href="<%= @law.url %>" target="_blank" class="btn-law">En savoir plus</a>
+</div>
+
+ <a href="https://www.assemblee-nationale.fr/14/documents/pion-notice.asp" class="tag-law">
+    # <%= @law.source %>
+ </a>
+  <p><%= @law.description %>.</p>
+
+
+     <div class="votes">
+    <%= link_to for_law_path(@law), class: "like", method: :put do %>
+      <div class="btn-like">
+        <i class="far fa-thumbs-up"></i> Pour <%= @law.get_upvotes.size %>
+      </div>
+      <% end %>
+
+    <%= link_to against_law_path(@law), class: "like", method: :put do %>
+      <div class="btn-like">
+        <i class="far fa-thumbs-down"></i> Contre <%= @law.get_downvotes.size %>
+      </div>
+      <% end %>
+    </div>
+
+

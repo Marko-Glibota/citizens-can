@@ -1,25 +1,45 @@
 <div class="forum">
-  <div class="form-forum">
-    <h2>Arguments Pour </h2>
-    <h2>Arguments Contre </h2>
-  </div>
+  <div class="forum-card">
+    <h3>Arguments <strong>pour</strong> </h3>
+      <% @law.comments.where(voting_status: "Pour").each do |comment| %>
+      <p><%= comment.user.first_name %>
+         <%= comment.user.last_name %>
+      </p>
+
+      <%= comment.content %>
+      <% end %>
+   </div>
+   <div class="forum-card">
+      <h3>Arguments <strong>contre</strong></h3>
+      <% @law.comments.where(voting_status: "Contre").each do |comment| %>
+      <%= comment.user.first_name %>
+      <%= comment.user.last_name %>
+      <%= comment.content %>
+    <% end %>
+   </div>
 </div>
 
-<% @law.comments.each do |comment| %>
-<%= @comment.user %><br>
-<%= @comment.content %><br>
-<% end %>
+  <div class="row mt-3">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form-login">
+        <h2>Poster un message </h2>
+
+          <%= simple_form_for [ @law, @comment ], html: {class: 'form-horizontal'} do |f| %>
+            <div class="form-inputs">
+              <%= f.input :voting_status,
+                          collection: Comment::VOTE,
+                          label: "Tu es :",
+                          as: :radio_buttons,
+                          required: true,
+                          autofocus: true %>
+              <%= f.input :content, label: "Ton message"%>
+            </div>
+            <div class="form-actions">
+              <%= f.submit "Ajouter un commentaire", class: 'btn-like'%>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
 
 
-<h2>Poster un message </h2>
-
-<%= simple_form_for [ @law, @comment ], html: {class: 'form-horizontal'} do |f| %>
-  <%= f.input :voting_status,
-              collection: Comment::VOTE,
-              label: "Tu es :",
-              as: :radio_buttons,
-              required: true,
-              autofocus: true %>
-  <%= f.input :content, label: "Ton message"%>
-  <%= f.submit "Ajouter un commentaire", class: 'btn-orange'%>
-<% end %>
