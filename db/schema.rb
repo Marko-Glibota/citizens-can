@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_135608) do
 
   add_foreign_key "comments", "laws"
   add_foreign_key "comments", "users"
+  add_foreign_key "representatives", "districts"
   add_foreign_key "representatives_votes", "laws"
   add_foreign_key "representatives_votes", "representatives"
   add_foreign_key "users_votes", "laws"
