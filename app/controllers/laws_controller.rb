@@ -41,6 +41,10 @@ class LawsController < ApplicationController
     redirect_to law_path(@law)
   end
 
+  def top
+    @laws = Law.where(voting_status: "for")
+  end
+
   private
 
   def set_law
