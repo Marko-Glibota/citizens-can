@@ -1,11 +1,37 @@
- require 'json'
+require 'json'
 
 module ScrappingRepresentativeConcern
   def scrapping
+    #Info perso député
     url = "https://www.nosdeputes.fr/#{@representative.slug}/json"
     info_perso_deputes_serialized = open(url).read
     info_perso_deputes = JSON.parse(info_perso_deputes_serialized)
+    info_perso_depute = info_perso_deputes["depute"]
 
+    # Autres misisons
+    info_perso_depute["responsabilites"].each do |reponsabilite|
+      @organisme_reponsabilite = responsabilite["organisme"]
+      @fonction_reponsabilite = responsabilite["fonction"]
+      @debut_de_fonction_reponsabilite = reponsabilite["debut_fonction"]
+    end
+
+    # Missions extra-parlementaires
+    info_perso_depute["responsabilites_extra_parlementaires"].each do |responsabilites_extra_parlementaires|
+      @organisme_reponsabilite_extra_parlementaire = responsabilites_extra_parlementaires["organisme"]
+      @fonction_reponsabilite_extra_parlementaire = responsabilites_extra_parlementaires["fonction"]
+      @debut_de_fonction_reponsabilite_extra_parlementaire = responsabilites_extra_parlementairess["debut_fonction"]
+    end
+
+    # Contact internet
+    info_perso_depute["sites_web"].each do |site_web|
+      @depute_site_web = site_web
+    end
+
+    info_perso_depute["emails"].each do |email|
+      @depute_email = email
+    end
+
+  # Activités Députés
     url = "https://www.nosdeputes.fr/synthese/data/json"
     activites_deputes_serialized = open(url).read
     activites_deputes = JSON.parse(activites_deputes_serialized)
