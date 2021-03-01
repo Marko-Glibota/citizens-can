@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <meta charset="UTF-8">
+  <title>Désolé, nous avons un problème (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Open+Sans:wght@300;400;600;700;800&display=swap');
+    body {
+      font-family: 'Open Sans', Helvecita, sans-serif;
+      font-style: 16px;
+      color: #00000091;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Monoton', cursive;
+      color: #f38181;
+      font-size: 42px;
+      margin-bottom: 0;
+      word-spacing: 15px;
+      text-align: center;
+    }
+    a {
+      background: linear-gradient( to right, #f38181, #EED489);
+      background-size: 150% 100%;
+      padding: 10px 15px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 28px;
+      transition: all .5s ease;
+    }
+    a:hover {
+      background-position: 100% 0;
+      color: #fff;
+      text-decoration: none;
+    }
+    img {
+      text-align: center;
+      border-radius: 6px;
+    }
+    .margin-top-30 {
+      margin-top: 30px;
+    }
+    .margin-bottom-30 {
+      margin-bottom: 30px;
+    }
+    .inline-block {
+      display: inline-block;
+    }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
+<body>
+  <div>
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <div class="margin-bottom-30">
+        <img src="chirac_500.gif" alt="">
+      </div>
+      <h1>Houston, nous avons un problème.</h1>
+      <p>Nos équipes sont sur le pont pour le règler. Non, on déconne, elles boivent un coup à la buvette de l'Assemblée.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <a href="http://www.citizens-can.com" class="margin-top-30 inline-block">Retourner à l'accueil</a>
   </div>
 </body>
 </html>
