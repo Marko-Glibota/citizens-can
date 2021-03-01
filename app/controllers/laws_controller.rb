@@ -6,15 +6,13 @@ class LawsController < ApplicationController
   include Pagy::Backend
 
   def index
-    @laws = Law.all
+    @laws = Law.order(date: :desc)
 
     if params[:query].present?
-      @laws = Law.where("title ILIKE ?", "%#{params[:query]}%")
-    else
-      @laws = Law.all
+      @laws = @laws.where("title ILIKE ?", "%#{params[:query]}%")
     end
 
-    @pagy, @laws = pagy(@laws.order(created_at: :desc), items: 10)
+    @pagy, @laws = pagy(@laws, items: 10)
   end
 
   def show
