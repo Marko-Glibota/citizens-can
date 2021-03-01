@@ -39,7 +39,8 @@ class LawsController < ApplicationController
     redirect_to law_path(@law)
   end
 
-  def top
+  def most_upvoted_laws
+    @laws = Law.order(:cached_votes_up).first(10)
   end
 
   private

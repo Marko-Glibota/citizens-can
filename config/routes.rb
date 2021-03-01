@@ -14,9 +14,6 @@ Rails.application.routes.draw do
       put "for" => "laws#for"
       put "against" => "laws#against"
     end
-    collection do
-      get :top
-    end
     resources :comments, only: [:create]
     resources :users_votes, only: [:new, :create]
   end
