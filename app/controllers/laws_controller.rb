@@ -4,7 +4,7 @@ class LawsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @laws = Law.all
+    @laws = Law.all.order('date DESC')
     if params[:query].present?
       @laws = Law.where("title ILIKE ?", "%#{params[:query]}%")
     else
