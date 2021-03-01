@@ -16,3 +16,27 @@
     margin-bottom: 20px
   }
 }
+
+.form-container {
+  margin: 40px 100px 40px 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-content {
+  flex-grow: 1;
+  border: 1px solid rgba(128, 128, 128, 0.438);
+  border-radius: 20px 0px 0px 20px;
+  padding: 10px 20px 10px 20px;
+}
+
+.form-content h2 {
+  padding-bottom: 20px;
+}
+
+.form-banner {
+  background-image: url("https://images.unsplash.com/photo-1599015298371-9c20a5d9cce8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");
+  width: 45%;
+  border-radius: 0px 20px 20px 0px;
+}
+
