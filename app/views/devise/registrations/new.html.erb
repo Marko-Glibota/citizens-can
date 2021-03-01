@@ -1,3 +1,9 @@
+<div class= "banner_pages">
+  <%= render 'shared/navbar' %>
+</div>
+
+<div class= "form-container">
+<div class= "form-content">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -42,8 +48,14 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: 'btn-orange' %>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<div class= "form-banner">
+</div>
+
+</div>
+
+<%#= render "devise/shared/links" %>
