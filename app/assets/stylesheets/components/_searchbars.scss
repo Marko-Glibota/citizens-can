@@ -3,8 +3,6 @@
   border-radius: 28px;
   padding: 16px 22px;
   font-size: 14px;
-  margin-top: 20px;
-  width: 33%;
 }
 
 .searchbar-laws {
@@ -24,4 +22,17 @@
 
 .relative {
   position: relative;
+}
+
+.ap-input-icon {
+    margin-right: 45px;
+}
+
+input[type="submit"] {
+    z-index: 1;
+}
+
+.search-bar-form {
+  display: flex;
+  width: 400px;
 }

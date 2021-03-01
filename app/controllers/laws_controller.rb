@@ -2,6 +2,8 @@ class LawsController < ApplicationController
   before_action :set_law, only: [:show, :upvote, :downvote, :for, :against]
   before_action :authenticate_user!, only: [:upvote, :downvote]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  # Pagy
+  include Pagy::Backend
 
   def index
     @laws = Law.all.order('date DESC')
@@ -10,6 +12,8 @@ class LawsController < ApplicationController
     else
       @laws = Law.all
     end
+
+    @pagy, @laws = pagy(items: 10)
   end
 
   def show
