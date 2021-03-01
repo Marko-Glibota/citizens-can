@@ -30,7 +30,7 @@ districts = JSON.parse(districts_serialized)
       department_code: district["properties"]["code_dpt"],
       department_name: district["properties"]["nom_dpt"],
       district_num: district["properties"]["num_circ"],
-      district_coordinates: district["geometry"]["coordinates"].flatten
+      district_coordinates: district["geometry"].inspect
     )
     puts "Création d'une circonscription"
     district.save!
