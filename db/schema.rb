@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_03_01_131755) do
 
   # These are extensions that must be enabled in order to support this database
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_131755) do
     t.integer "department_code"
     t.string "department_name"
     t.integer "district_num"
-    t.float "district_coordinates", default: [], array: true
+    t.text "district_coordinates", default: "{}"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
