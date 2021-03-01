@@ -9,17 +9,17 @@ module ScrappingRepresentativeConcern
     info_perso_depute = info_perso_deputes["depute"]
 
     # Autres misisons
-    info_perso_depute["responsabilites"].each do |reponsabilite|
+    info_perso_depute["responsabilites"].each do |responsabilite|
       @organisme_reponsabilite = responsabilite["organisme"]
       @fonction_reponsabilite = responsabilite["fonction"]
-      @debut_de_fonction_reponsabilite = reponsabilite["debut_fonction"]
+      @debut_de_fonction_reponsabilite = responsabilite["debut_fonction"]
     end
 
     # Missions extra-parlementaires
     info_perso_depute["responsabilites_extra_parlementaires"].each do |responsabilites_extra_parlementaires|
       @organisme_reponsabilite_extra_parlementaire = responsabilites_extra_parlementaires["organisme"]
       @fonction_reponsabilite_extra_parlementaire = responsabilites_extra_parlementaires["fonction"]
-      @debut_de_fonction_reponsabilite_extra_parlementaire = responsabilites_extra_parlementairess["debut_fonction"]
+      @debut_de_fonction_reponsabilite_extra_parlementaire = responsabilites_extra_parlementaires["debut_fonction"]
     end
 
     # Contact internet
