@@ -2,14 +2,19 @@ class LawsController < ApplicationController
   before_action :set_law, only: [:show, :upvote, :downvote, :for, :against]
   before_action :authenticate_user!, only: [:upvote, :downvote]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  # Pagy
+  include Pagy::Backend
 
   def index
     @laws = Law.all
+
     if params[:query].present?
       @laws = Law.where("title ILIKE ?", "%#{params[:query]}%")
     else
       @laws = Law.all
     end
+
+    @pagy, @laws = pagy(@laws.order(created_at: :desc), items: 10)
   end
 
   def show
