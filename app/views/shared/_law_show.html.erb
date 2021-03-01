@@ -1,25 +1,39 @@
-<div class ="presentation-law">
-    <h2><%= @law.title %></h2>
-    <a href="<%= @law.url %>" target="_blank" class="btn-law">Lire le PDF</a>
-</div>
+<%= link_to 'Retour aux lois', laws_path, class: 'btn-orange margin-30' %>
 
- <a href="https://www.assemblee-nationale.fr/14/documents/pion-notice.asp" class="tag-law">
-    # <%= @law.source %>
- </a>
+<div class="general-law">
+  <div class="bloc-law">
+    <div class ="title-law">
+      <h2 class=''><%= @law.title %></h2>
+      <a href="<%= @law.url %>" target="_blank" class="btn-law">Lire le PDF</a>
+   </div>
+
+  <div class="description-law">
+    <a href="https://www.assemblee-nationale.fr/14/documents/pion-notice.asp" class="tag-law">
+      # <%= @law.source %>
+    </a>
    <p><%= @law.description %>.</p>
-
-  <div class="votes">
-    <%= link_to for_law_path(@law), class: "like", method: :put do %>
-      <div class="btn-like">
-        <i class="far fa-thumbs-up"> </i>  je suis <strong>pour</strong>  <%= @law.get_upvotes.size %>
-      </div>
-      <% end %>
-
-    <%= link_to against_law_path(@law), class: "like", method: :put do %>
-      <div class="btn-like">
-        <i class="far fa-thumbs-down"> </i>  je suis <strong>contre</strong>  <%= @law.get_downvotes.size %>
-      </div>
-      <% end %>
   </div>
 
-<a href="http://www.citizens-can.com/representatives/13" class="">Interpeler mon député</a>
+    <div class="votes">
+      <%= link_to for_law_path(@law), class: "like", method: :put do %>
+        <div class="btn-like for">
+          <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>  <%= @law.get_upvotes.size %>
+        </div>
+        <% end %>
+
+      <%= link_to against_law_path(@law), class: "like", method: :put do %>
+        <div class="btn-like">
+          <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>  <%= @law.get_downvotes.size %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+   <div class="card-depute">
+        <h3>Interpelle ton député</h3>
+
+    </div>
+</div>
+
+
+
+
