@@ -30,7 +30,7 @@ districts = JSON.parse(districts_serialized)
       department_code: district["properties"]["code_dpt"],
       department_name: district["properties"]["nom_dpt"],
       district_num: district["properties"]["num_circ"],
-      district_coordinates: district["geometry"]["coordinates"].flatten
+      district_coordinates: district["geometry"].inspect
     )
     puts "Création d'une circonscription"
     district.save!
@@ -93,10 +93,26 @@ doc = Nokogiri::HTML(html_file)
   
 doc.search('.liens-liste > li').first(30).each do |law|
   puts "creating proposition..."
+  months = {
+    janvier: 1,
+    février: 2,
+    mars: 3,
+    avril: 4,
+    mai: 5,
+    juin: 6,
+    juillet: 7,
+    aout: 8,
+    septembre: 9,
+    octobre: 10,
+    novembre: 11,
+    décembre: 12
+  }
   title = law.search('h3').text
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('.liens-liste-embed a').attribute('href').value
+  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ") 
+  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
 
   html_file = open(details).read
   doc = Nokogiri::HTML(html_file)
@@ -105,20 +121,23 @@ doc.search('.liens-liste > li').first(30).each do |law|
     auteur_link = law.search('.nom-personne a').attribute('href').value
     auteur_id = auteur_link.match(/PA\d+/)[0] if auteur_link.match(/PA\d+/)
     auteur_name = law.search('.nom-personne a').text
-
-    law = Law.new(
-      num: num,
-      title: title, 
-      description: description,
-      url: details,
-      source: "Proposition",
-      author_type: "Auteur",
-      author: auteur_name,
-      id_an: auteur_id,
-      # representative_id: Representative.where(id_an: law.id_an)
-    )
-    puts "created proposition!"
-    law.save!
+    
+    if creation_date != nil
+      law = Law.new(
+        num: num,
+        title: title, 
+        description: description,
+        url: details,
+        source: "Proposition",
+        author_type: "Auteur",
+        author: auteur_name,
+        id_an: auteur_id,
+        date: creation_date
+        # representative_id: Representative.where(id_an: law.id_an)
+      )
+      puts "created proposition!"
+      law.save!
+    end
   end
 end
 
@@ -130,10 +149,26 @@ doc = Nokogiri::HTML(html_file)
 
 doc.search('.liens-liste > li').first(30).each do |law|
   puts "creating projet..."
+  months = {
+    janvier: 1,
+    février: 2,
+    mars: 3,
+    avril: 4,
+    mai: 5,
+    juin: 6,
+    juillet: 7,
+    aout: 8,
+    septembre: 9,
+    octobre: 10,
+    novembre: 11,
+    décembre: 12
+  }
   title = law.search('h3').text
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('a').attribute('href').value
+  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ")
+  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
   
 
   html_file = open(details).read
@@ -144,19 +179,22 @@ doc.search('.liens-liste > li').first(30).each do |law|
     rapporteur_id = rapporteur_link.match(/PA\d+/)[2] if rapporteur_link.match(/PA\d+/)
     rapporteur_name = law.search('.nom-personne a').text
 
-    law = Law.new(
-      num: num,
-      title: title, 
-      description: description,
-      url: details,
-      source: "Projet",
-      author_type: "Rapporteur",
-      author: rapporteur_name,
-      id_an: rapporteur_id,
-      # representative_id: Representative.where(id_an: law.id_an)
-    )
-    puts "created projet!"
-    law.save!
+    if creation_date != nil
+      law = Law.new(
+        num: num,
+        title: title, 
+        description: description,
+        url: details,
+        source: "Proposition",
+        author_type: "Auteur",
+        author: rapporteur_name,
+        id_an: rapporteur_id,
+        date: creation_date
+        # representative_id: Representative.where(id_an: law.id_an)
+      )
+      puts "created proposition!"
+      law.save!
+    end
   end
 end
 
