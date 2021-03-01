@@ -44,7 +44,6 @@ class RepresentativesController < ApplicationController
       end
       polygon = Geokit::Polygon.new(points)
       if polygon.contains?(Geokit::LatLng.new(@user_coordinates[0], @user_coordinates[1]))
-        current_user.update(district: district)
         return redirect_to representative_path(district.representative)
       end
     end
