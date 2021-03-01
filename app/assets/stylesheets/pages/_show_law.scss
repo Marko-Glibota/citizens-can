@@ -1,16 +1,24 @@
-.presentation-law {
+.title-law {
   display: flex;
 }
 
 .tag-law {
   display: inline-block;
   font-size: 13px;
-  padding: 6px 17px;
+  padding: 6px 0px;
   color: #f38181;
-  border: 1px solid #f38181;
   margin: 15px 0px 15px 0px;
+  font-size: 18px;
    &:hover {
     text-decoration: none;
     color:#ffebea;
    }
+}
+
+.general-law {
+  display:flex;
+}
+
+.bloc-law {
+  width: 65%;
 }
