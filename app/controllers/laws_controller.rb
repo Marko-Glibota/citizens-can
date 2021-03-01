@@ -40,7 +40,6 @@ class LawsController < ApplicationController
   end
 
   def top
-    @laws = Law.where(voting_status: "for")
   end
 
   private
