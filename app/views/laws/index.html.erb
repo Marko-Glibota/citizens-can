@@ -5,9 +5,13 @@
 
 <div class="container">
   <div class="searchbar-laws-container">
-      <%= render 'shared/searchbar_laws' %>
+    <%= render 'shared/searchbar_laws' %>
   </div>
+
+  <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+
   <% @laws.each do |law| %>
     <%= render 'shared/card_law', law: law %>
   <% end %>
+  <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
 </div>

@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+gem 'pagy', '~> 3.11'
+
 gem 'acts_as_votable'
 gem 'geocoder'
 gem 'autoprefixer-rails'
