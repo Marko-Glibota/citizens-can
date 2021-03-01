@@ -6,7 +6,8 @@ require 'nokogiri'
 
 class RepresentativesController < ApplicationController
 
-   include ScrappingRepresentativeConcern
+  include ScrappingRepresentativeConcern
+  
   def show
     @representative = Representative.find(params[:id])
     @name = "#{@representative.first_name} #{@representative.last_name}"
