@@ -45,6 +45,7 @@
 
 .card-proposition-loi {
   .card-feature {
+    height: 500px;
     h4 {
       margin-bottom: 10px;
     }
@@ -59,6 +60,7 @@
 
 .card-photo-parti {
   .card-feature {
+    height: 500px;
     h4 {
       margin-bottom: 30px;
     }
@@ -70,6 +72,7 @@
 
 .department-district {
   .card-feature {
+    height: 500px;
     .fas {
       margin-bottom: 10px;
     }
@@ -79,12 +82,18 @@
   }
 }
 
-.card-mandat-en-cours .card-feature p {
+.card-mandat-en-cours {
+  .card-feature {
+    height: 500px;
+    p {
   margin-bottom: 42px;
+    }
+  }
 }
 
 .card-info-sup {
   .card-feature {
+    height: 500px;
     .fas {
       margin-bottom: 10px;
     }
@@ -97,6 +106,7 @@
 
 .card-declaration-interest {
   .card-feature {
+    height: 500px;
     .fas {
       margin-bottom: 5px;
     }
@@ -108,6 +118,7 @@
 
 .card-collaborators {
   .card-feature {
+    height: 500px;
     text-align: center;
     .fas {
       margin-bottom: 10px;
