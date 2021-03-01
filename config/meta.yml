@@ -1,5 +1,5 @@
 meta_product_name: "Citizens Can"
 meta_title: "Application de démocratie participative & directe"
 meta_description: "Citizens Can permet aux citoyens français de s'impliquer dans la vie démocratique de leur pays. Grâce à Citizens Can, vous pouvez voter pour ou contre une proposition de loi et interpellez votre député afin qu'il aligne son vote sur le vôtre."
-meta_image: "assemblee_nationale.jpg" # should exist in `app/assets/images/`
+meta_image: "assemblee_nationale_2.jpg" # should exist in `app/assets/images/`
 twitter_account: "@Lewagonparis"   # required for Twitter Cards
