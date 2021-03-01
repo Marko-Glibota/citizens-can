@@ -23,11 +23,8 @@
     <%= f.input :address,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "zip" } %>
-    <%= f.input :city,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "zip" } %>
+                input_html: { autocomplete: "zip",
+                              class: 'address-input' } %>
     <%= f.input :zip,
                 required: true,
                 autofocus: true,
