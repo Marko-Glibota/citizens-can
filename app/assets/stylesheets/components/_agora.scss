@@ -4,7 +4,6 @@
 }
 
 .forum-card {
-  weight: 200px;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 16px 24px;
@@ -15,4 +14,47 @@
   background-color: lightgrey;
   border-radius: 5px;
   padding: 15px;
+}
+
+.fa-comments, .fa-comment-dots {
+  font-size: 30px;
+  color:#2f4bd0;
+}
+
+.fa-vote-yea {
+  margin-top: 15px;
+  font-size: 20px;
+  color: #2f4bd0;
+}
+
+.fa-clock {
+  margin-bottom: 10px;
+}
+
+.header-agora {
+  display:flex;
+  margin: 30px 0px 30px 0px;
+    h2 {
+      margin-left: 20px;
+    }
+}
+
+.title-argument {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.comments {
+ height: 400px;
+ overflow-y : scroll;
+  p {
+    font-weight: bolder;
+    color: black;
+  }
+}
+
+.hour-comment {
+  font-weight: 300;
+  font-size: 14px;
 }
