@@ -29,8 +29,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initPlaces } from '../components/init_places';
+import { initChart } from '../components/chart';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initPlaces();
+  initChart();
 });
