@@ -9,11 +9,12 @@ module ScrappingRepresentativeConcern
     info_perso_depute = info_perso_deputes["depute"]
 
     # Autres misisons
-    info_perso_depute["responsabilites"].each do |responsabilite|
-      @organisme_reponsabilite = responsabilite["organisme"]
-      @fonction_reponsabilite = responsabilite["fonction"]
-      @debut_de_fonction_reponsabilite = responsabilite["debut_fonction"]
-    end
+    @infos_perso_depute = info_perso_depute["responsabilites"]
+    # info_perso_depute["responsabilites"].each do |responsabilite|
+    #   @organisme_reponsabilite = responsabilite["responsabilite"]["organisme"]
+    #   @fonction_reponsabilite = responsabilite["responsabilite"]["fonction"]
+    #   @debut_de_fonction_reponsabilite = responsabilite["responsabilite"]["debut_fonction"]
+    # end
 
     # Missions extra-parlementaires
     info_perso_depute["responsabilites_extra_parlementaires"].each do |responsabilites_extra_parlementaires|
@@ -41,8 +42,8 @@ module ScrappingRepresentativeConcern
       if depute["depute"]["id_an"] = @representative.id_an
         @depute_nb_mandats = depute["depute"]["nb_mandats"]
         @depute_semaines_presence = depute["depute"]["semaines_presence"]
-        @depute_comission_presences = depute["depute"]["comission_presences"]
-        @depute_comission_interventions = depute["depute"]["comission_interventions"]
+        @depute_comission_presences = depute["depute"]["commission_presences"]
+        @depute_comission_interventions = depute["depute"]["commission_interventions"]
         @depute_interventions_hemicycle = depute["depute"]["hemicycle_interventions"]
         @depute_interventions_courtes = depute["depute"]["hemicycle_interventions_courtes"]
         @depute_amendements_proposes = depute["depute"]["amendements_proposes"]

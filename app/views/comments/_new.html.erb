@@ -1,29 +1,86 @@
-<h2 class="text-center mb-5">Agora</h2>
-<div class="forum w-100">
-  <div class="forum-card w-50">
-    <h3>Arguments <strong>pour</strong> </h3>
-      <% @law.comments.where(voting_status: "Pour").each do |comment| %>
-      <p class="mb-0 mt-3 font-weight-bold"><%= comment.user.first_name.capitalize %> <%= comment.user.last_name.capitalize %></p>
-      <div class="forum-content">
-        <%= comment.content %>
+<div class="header-agora">
+  <i class="fas fa-comments"></i>
+  <h2 class='ml-30'>Agora</h2>
+</div>
+
+<div class="forum w-200">
+  <div class="forum-card w-100">
+    <div class="title-argument">
+      <div class="vote-argument">
+        <h3>Arguments <strong>pour</strong></h3>
+        <i class="fas fa-vote-yea"></i> <%= @law.get_upvotes.size %>
       </div>
-      <% end %>
-   </div>
-   <div class="forum-card w-50">
-      <h3>Arguments <strong>contre</strong></h3>
-      <% @law.comments.where(voting_status: "Contre").each do |comment| %>
-      <p class="mb-0 mt-3 font-weight-bold"><%= comment.user.first_name.capitalize %><%= comment.user.last_name.capitalize %></p>
-        <div class="forum-content">
-          <%= comment.content %>
+      <%= link_to for_law_path(@law), class: "like", method: :put do %>
+          <div class="btn-like for">
+            <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
+          </div>
+          <% end %>
+    </div>
+
+      <div class="comments">
+     <% if @law.comments.where(voting_status: "Pour").count == 0 %>
+
+        <div class="message">
+          <%= image_tag('empty-chat.png', height: '300', width: '300') %>
+          <h3 class="mb-2">Il n'y a pas de messages</h3>
+          <p class="mb-1"> Vous pouvez poster le premier message !</p>
         </div>
-    <% end %>
+       <% else %>
+          <% @law.comments.where(voting_status: "Pour").each do |comment| %>
+          <p class="mb-2 mt-3">
+            <%= comment.user.first_name.capitalize %>
+            <%= comment.user.last_name.capitalize %>
+          </p>
+            <i class="far fa-clock"> <%= comment.user.created_at %> </i>
+            <div class="forum-content">
+              <%= comment.content %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+   </div>
+
+   <div class="forum-card w-100">
+
+      <div class="title-argument">
+        <div class="vote-argument">
+          <h3>Arguments <strong>contre</strong></h3>
+          <i class="fas fa-vote-yea"></i>  <%= @law.get_downvotes.size %>
+        </div>
+       <%= link_to against_law_path(@law), class: "like", method: :put do %>
+        <div class="btn-like">
+          <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
+        </div>
+        <% end %>
+      </div>
+
+        <div class="comments">
+          <% if @law.comments.where(voting_status: "Contre").count == 0 %>
+            <div class="message">
+              <%= image_tag('empty-chat.png', height: '300', width: '300') %>
+              <h3 class="mb-2">Il n'y a pas de messages</h3>
+              <p class="mb-1"> Vous pouvez poster le premier message !</p>
+            </div>
+          <% else %>
+           <% @law.comments.where(voting_status: "Contre").each do |comment| %>
+            <p class="mb-2 mt-3">
+            <%= comment.user.first_name.capitalize %>
+            <%= comment.user.last_name.capitalize %>
+            </p>
+              <i class="far fa-clock"> <%= comment.user.created_at %> </i>
+                <div class="forum-content">
+                  <%= comment.content %>
+                </div>
+            <% end %>
+          <% end %>
+        </div>
    </div>
 </div>
 
-  <div class="row mt-3">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4 ml-auto mr-auto">
       <div class="form-login">
-        <h2>Poster un message </h2>
+        <div class="title-message text-center">
+          <i class="fas fa-comment-dots"></i> <h2>Poster un message </h2>
+        </div>
 
           <%= simple_form_for [ @law, @comment ], html: {class: 'form-horizontal'} do |f| %>
             <div class="form-inputs">
@@ -35,12 +92,11 @@
                           autofocus: true %>
               <%= f.input :content, label: "Ton message"%>
             </div>
-            <div class="form-actions">
-              <%= f.submit "Ajouter un commentaire", class: 'btn-like'%>
+            <div class="form-actions text-center">
+              <%= f.submit "Ajouter un commentaire", class: 'btn-blue'%>
             </div>
           <% end %>
       </div>
-    </div>
-  </div>
+
 
 

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    attrs = [:first_name, :last_name, :address, :zip, :age, :city, :email]
+    attrs = [:first_name, :last_name, :address, :age, :email]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: attrs)
   end
