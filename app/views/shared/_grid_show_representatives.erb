@@ -37,8 +37,9 @@
     <div class="card-presence_an">
       <div class= "card-show-representative">
         <h4>Présence hémicycles</h4>
-        <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>"></canvas>
-        <p><strong><%= @depute_comission_presences  %></strong></p>
+         <div class="chart">
+           <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>" width="200" height="100"></canvas>
+         </div>
       </div>
     </div>
     <div class="card-propositions">
@@ -49,10 +50,11 @@
     </div>
     <div class="card-amendements-questions">
       <div class= "card-show-representative">
+        <h4>Proactivité du député</h4>
         <p><strong><%= @depute_amendements_proposes %></strong> amendements proposés</p>
-        <p><strong><%= @depute_amendements_signes %></strong>amendements signés</p>
-        <p><strong><%= @depute_questions_ecrites %></strong>questions écrites</p>
-        <p><strong><%= @depute_question_orales %></strong>questions orales</p>
+        <p><strong><%= @depute_amendements_signes %></strong> amendements signés</p>
+        <p><strong><%= @depute_questions_ecrites %></strong> questions écrites</p>
+        <p><strong><%= @depute_question_orales %></strong> questions orales</p>
       </div>
     </div>
     <div class="card-infos">
@@ -78,6 +80,7 @@
     </div>
     <div class="card-collaborateurs">
       <div class= "card-show-representative">
+        <h4>Liste des collaborateurs</h4>
         <div class="text-align">
           <ul>
             <li><p><%= @representative.collaborators[0]  %></p></li>
