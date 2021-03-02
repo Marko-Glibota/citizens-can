@@ -6,6 +6,10 @@ require 'geokit'
 class RepresentativesController < ApplicationController
 
   include ScrappingRepresentativeConcern
+
+  def index
+    @representatives = Representative.all
+  end
   
   def show
     @representative = Representative.find(params[:id])
