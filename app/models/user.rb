@@ -9,5 +9,5 @@ class User < ApplicationRecord
   acts_as_voter
 
   validates :email, :password, :first_name, :last_name, :address, :age, presence: true
-  validates :zip, :age, numericality: { only_integer: true }
+  validates :age, numericality: { only_integer: true }
 end
