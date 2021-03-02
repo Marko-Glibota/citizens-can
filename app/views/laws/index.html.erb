@@ -17,6 +17,7 @@
     <a class="nav-link" id="least-popular-tab" data-toggle="tab" href="#least-popular" role="tab" aria-controls="least-popular" aria-selected="false">Les moins populaires</a>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
 
   <!-- Onglet contenant toutes les lois -->
@@ -30,14 +31,17 @@
     <% @laws.each do |law| %>
       <%= render 'shared/card_law', law: law %>
     <% end %>
+
     <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
   </div>
 
   <!-- Onglet contenant les 10 lois les plus populaires -->
   <div class="tab-pane fade mt-5" id="most-popular" role="tabpanel" aria-labelledby="most-popular-tab">
+    <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
     <% @most_upvoted_laws.each do |law| %>
       <%= render 'shared/card_law', law: law %>
     <% end %>
+    <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
   </div>
 
   <!-- Onglet contenant les 10 lois les moins populaires -->
