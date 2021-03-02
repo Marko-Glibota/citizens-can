@@ -24,7 +24,9 @@
 
 .card-presence_an {
   grid-column: 2;
-  grid-row: 2/4;
+  // grid-row: 2/4;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .card-propositions {
@@ -34,27 +36,41 @@
 
 .card-amendements-questions {
   grid-column: 3;
-  grid-row: 2/4;
+  // grid-row: 2/4;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .card-infos {
   grid-column: 1;
   grid-row: 5/7;
+  grid-row-start: 5;
+  grid-row-end: 7;
 }
 
 .card-missions {
-  grid-column: 2/3;
-  grid-row: 5/7;
+  // grid-column: 2/3;
+  // grid-row: 5/7;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 7;
 }
 
 .card-collaborateurs {
   grid-column: 1;
-  grid-row: 8/10;
+  // grid-row: 8/10;
+  grid-row-start: 8;
+  grid-row-end: 10;
 }
 
 .card-decla-interet {
-  grid-column: 2/3;
-  grid-row: 8/9;
+  // grid-column: 2/3;
+  // grid-row: 8/9;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 8;
+  grid-row-end: 9;
 }
 
 .img-photo {
