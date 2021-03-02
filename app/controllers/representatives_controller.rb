@@ -6,7 +6,7 @@ require 'geokit'
 class RepresentativesController < ApplicationController
 
   include ScrappingRepresentativeConcern
-  
+
   def show
     @representative = Representative.find(params[:id])
     @name = "#{@representative.first_name} #{@representative.last_name}"
@@ -37,9 +37,9 @@ class RepresentativesController < ApplicationController
       while polygon_coordinates[0][0].is_a?(Array)
         polygon_coordinates = polygon_coordinates.flatten(1)
       end
-  
+
       points = []
-      polygon_coordinates.each do |coordinate|      
+      polygon_coordinates.each do |coordinate|
         points << Geokit::LatLng.new(coordinate[1], coordinate[0])
       end
       polygon = Geokit::Polygon.new(points)

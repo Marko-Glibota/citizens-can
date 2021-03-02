@@ -1,17 +1,51 @@
 <div class="banner_pages">
   <%= render 'shared/navbar' %>
-  <h1>Lois</h1>
 </div>
 
 <div class="container">
-  <div class="searchbar-laws-container">
-    <%= render 'shared/searchbar_laws' %>
+
+<h1 class="grey centered">Lois</h1>
+
+<ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="all-laws-tab" data-toggle="tab" href="#all-laws" role="tab" aria-controls="all-laws" aria-selected="true">Tous les projets et propositions de lois (<%= Law.all.count %>)</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="most-popular-tab" data-toggle="tab" href="#most-popular" role="tab" aria-controls="most-popular" aria-selected="false">Les plus populaires (10)</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="least-popular-tab" data-toggle="tab" href="#least-popular" role="tab" aria-controls="least-popular" aria-selected="false">Les moins populaires (10)</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+
+  <!-- Onglet contenant toutes les lois -->
+  <div class="tab-pane fade show active" id="all-laws" role="tabpanel" aria-labelledby="all-laws-tab">
+    <div class="searchbar-laws-container">
+      <%= render 'shared/searchbar_laws' %>
+    </div>
+
+    <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+
+    <% @laws.each do |law| %>
+      <%= render 'shared/card_law', law: law %>
+    <% end %>
+    <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
   </div>
 
-  <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+  <!-- Onglet contenant les 10 lois les plus populaires -->
+  <div class="tab-pane fade mt-5" id="most-popular" role="tabpanel" aria-labelledby="most-popular-tab">
+    <% @most_upvoted_laws.each do |law| %>
+      <%= render 'shared/card_law', law: law %>
+    <% end %>
+  </div>
 
-  <% @laws.each do |law| %>
-    <%= render 'shared/card_law', law: law %>
-  <% end %>
-  <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+  <!-- Onglet contenant les 10 lois les moins populaires -->
+  <div class="tab-pane fade mt-5" id="least-popular" role="tabpanel" aria-labelledby="least-popular-tab">
+    <% @most_downvoted_laws.each do |law| %>
+      <%= render 'shared/card_law', law: law %>
+    <% end %>
+  </div>
+</div>
+
 </div>

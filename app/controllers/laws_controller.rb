@@ -13,6 +13,9 @@ class LawsController < ApplicationController
     end
 
     @pagy, @laws = pagy(@laws, items: 10)
+
+    @most_upvoted_laws = Law.order(:cached_votes_up => :desc).first(10)
+    @most_downvoted_laws = Law.order(:cached_votes_down => :desc).first(10)
   end
 
   def show
