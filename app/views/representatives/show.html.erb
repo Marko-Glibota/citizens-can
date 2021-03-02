@@ -1,11 +1,18 @@
 <div class="banner_pages">
   <%= render 'shared/navbar' %>
   <h1>Fiche Député</h1>
+  <ul>
+  </ul>
 </div>
 
-
-<%= render 'shared/grid_show_representatives' %>
-
+<div class="container-grid">
+  <%= render 'shared/grid_show_representatives' %>
+</div>
+<div class="container">
+  <% @laws.first(6).each do |law|%>
+    <%= render 'shared/card_law', law: law %>
+  <% end %>
+</div>
 
 
 

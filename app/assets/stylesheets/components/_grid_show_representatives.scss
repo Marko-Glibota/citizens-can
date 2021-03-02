@@ -34,38 +34,60 @@
   grid-row: 2;
 }
 
+.card-activite-loi {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.card-activite-depute {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.card-important-date {
+  grid-column: 3;
+  grid-row: 3;
+}
+
 .img-photo {
-  margin-bottom: 10px;
+  height: 170px;
+  margin-bottom: 20px;
   border-radius: 100px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
   border-radius: 50%;
 }
 
 
 
 .card-proposition-loi {
-  .card-feature {
-    height: 500px;
-    h4 {
-      margin-bottom: 10px;
-    }
-    .fas {
-      margin-bottom: 10px;
-    }
-    p {
-      margin-bottom: 25px;
-    }
-  }
-}
-
-.card-photo-parti {
+  margin-top: 50px;
   .card-feature {
     height: 500px;
     h4 {
       margin-bottom: 30px;
     }
     .fas {
-      margin-bottom: 10px;
+      margin-bottom: 20px !important;
+    }
+    p {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.card-photo-parti {
+  margin-top: 50px;
+  .card-feature {
+    height: 500px;
+    h4 {
+      margin-bottom: 30px;
+    }
+    .fas {
+      margin-bottom: 20px !important;
+    }
+    p {
+
     }
   }
 }
@@ -74,65 +96,144 @@
   .card-feature {
     height: 500px;
     .fas {
-      margin-bottom: 10px;
+      margin-bottom: 20px !important;
     }
     p {
       margin-bottom: 42px;
+    }
+    h4 {
+      margin-bottom: 30px;
     }
   }
 }
 
 .card-mandat-en-cours {
+  margin-top: 50px;
   .card-feature {
     height: 500px;
+    .fas {
+      margin-bottom: 20px !important;
+    }
     p {
-  margin-bottom: 42px;
+  margin-bottom: 22px;
+    }
+    h4 {
+      margin-bottom: 30px;
+    }
+    ul {
+      margin-right: 5px;
+      list-style: none;
+      margin-right: 30px;
+      p {
+      }
     }
   }
 }
 
 .card-info-sup {
+  margin-top: 30px;
   .card-feature {
     height: 500px;
     .fas {
-      margin-bottom: 10px;
+      margin-bottom: 20px !important;
     }
     p {
   margin-bottom: 30px;
+     }
+     h4 {
+      margin-bottom: 30px;
      }
   }
 }
 
 
 .card-declaration-interest {
+  margin-top: 30px;
   .card-feature {
     height: 500px;
     .fas {
-      margin-bottom: 5px;
+      margin-bottom: 20px !important;
     }
     h4 {
-      margin-top: 5px;
+      margin-bottom: 30px;
     }
   }
 }
 
 .card-collaborators {
+  margin-top: 30px;
   .card-feature {
     height: 500px;
     text-align: center;
+    .text-align {
+      text-align: center;
+    }
     .fas {
-      margin-bottom: 10px;
+      margin-bottom: 20px !important;
     }
     p {
       margin-bottom: 42px;
     }
+    h4 {
+      margin-bottom: 30px;
+    }
     ul {
+      margin-right: 5px;
       list-style: none;
-      text-align: justify;
-      margin-left: 80px;
+      margin-right: 30px;
+        p {
+          margin: none;
+        }
     }
   }
 }
+
+.card-activite-loi {
+  margin-top: 30px;
+  .card-feature {
+    height: 500px;
+    .fas {
+      margin-bottom: 20px !important;
+    }
+    p {
+    }
+    h4 {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.card-activite-depute {
+  margin-top: 30px;
+  .card-feature {
+    height: 500px;
+    .fas {
+      margin-bottom: 20px !important;
+    }
+    p {
+    }
+    h4 {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.card-important-date {
+  margin-top: 30px;
+  .card-feature {
+    height: 500px;
+    .fas {
+      margin-bottom: 20px !important;
+    }
+    p {
+    }
+    h4 {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+
 
 
 .link-simple {
@@ -141,4 +242,8 @@
   :hover {
     text-decoration: overline;
   }
+}
+
+.container-grid {
+  margin: 0 auto;
 }

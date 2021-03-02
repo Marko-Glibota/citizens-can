@@ -2,7 +2,7 @@
   <div class="grid-depute">
     <div class="card-photo-parti">
       <div class="card-feature">
-        <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/200", alt: "Photo député", width: 200, class: "img-photo" %>
+        <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
         <h4><%= @name %></h4>
         <p>
           <strong>Nom du département :</strong>
@@ -10,7 +10,18 @@
         </p>
         <p>
           <strong>Numéro de circonscritpion</strong>
-          <%= @representative.district_num %> ème circonscritpion
+          <%= @representative.district_num %>
+          <% if @representative.district_num == 1  %>
+            ère Circonscription
+          <% elsif @representative.district_num == 2 %>
+            nd Circonscription
+          <% else %>
+            ème Circonscription
+          <% end %>
+        </p>
+        <p>
+          <strong>Nombre de mandats :</strong>
+          <%= @depute_nb_mandats %>
         </p>
       </div>
     </div>
@@ -26,7 +37,7 @@
           <strong>Place dans l'hémicycle</strong>
           <%= @representative.seat_number %>
         </p>
-        <a href="#" class="btn-orange">Voir les lois</a>
+        <a href="https://www2.assemblee-nationale.fr/deputes/hemicycle" class="btn-orange">Voir l'hémicycle</a>
       </div>
     </div>
     <div class="card-mandat-en-cours">
@@ -34,7 +45,17 @@
         <i class="fas fa-user-tie"></i>
         <h4>Autre profession</h4>
         <p><%= @representative.profession %></p>
-        <a href="#" class="btn-orange">En savoir plus</a>
+        <h4>Collaborateurs</h4> 
+        <div class="text-align">
+          <ul>
+            <li><p><%= @representative.collaborators[0]  %></p></li>
+            <li><p><%= @representative.collaborators[1]  %></p></li>
+            <li><p><%= @representative.collaborators[2]  %></p></li>
+            <li><p><%= @representative.collaborators[3]  %></p></li>
+            <li><p><%= @representative.collaborators[4]  %></p></li>
+            <li><p><%= @representative.collaborators[5] %></p></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="card-info-sup">
@@ -57,27 +78,80 @@
     <div class="card-declaration-interest">
       <div class="card-feature">
         <i class="fas fa-file-upload"></i>
-        <h4>Déclaration d'intérêts</h4>
+        <h4>Présences dans l'hémicycle</h4>
+        <p>
+          <strong>Semaines de présences dans l'hémicycle :</strong>
+          <%= @depute_semaines_presence %>
         </p>
-        <a href="#" class="link-simple">Consulter la déclaration d’intérêts & d’activités de <%= @name %></a>
-        
+        <p>
+          <strong>Présence aux comissions à l'Assemblée :</strong>
+          <%= @depute_comission_presences %>
+        </p>
       </div>
     </div>
     <div class="card-collaborators">
       <div class="card-feature">
         <i class="fas fa-gavel"></i>
-        <h4>Collaborateurs</h4> 
         <ul>
-          <li><%= @representative.collaborators[0]  %></li>
-          <li><%= @representative.collaborators[1]  %></li>
-          <li><%= @representative.collaborators[2]  %></li>
-          <li><%= @representative.collaborators[3]  %></li>
-          <li><%= @representative.collaborators[4]  %></li>
-          <li><%= @representative.collaborators[5] %></li>
+          <% @infos_perso_depute.first(2).each do |responsabilite| %>
+            <li>
+              <p>
+                <strong>Mission :</strong>
+                <%= responsabilite["responsabilite"]["organisme"] %>
+                ( <%= responsabilite["responsabilite"]["fonction"].capitalize %> depuis le <%= responsabilite["responsabilite"]["debut_fonction"] %> ) 
+              </p>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
-      <% @laws.first(6).each do |law|%>
-        <%= render 'shared/card_law', law: law %>
-      <% end %>
+    <div class="card-activite-loi">
+      <div class="card-feature">
+        <i class="fas fa-file-upload"></i>
+        <h4>Propositions et interventions dans l'hémicycle</h4>
+        <p>
+          <strong>Propositions écrites :</strong>
+          <%= @depute_propositions_ecrites %>
+        </p>
+        <p>
+          <strong>Propositions signées :</strong>
+          <%= @depute_propositions_signees %>
+        </p>
+        <p>
+          <strong>Interventions dans l'hémicycle :</strong>
+          <% interventions = @depute_interventions_hemicycle + @depute_interventions_courtes   %>
+          <%= @depute_propositions_ecrites %>
+        </p>
+      </div>
+    </div>
+    <div class="card-activite-depute">
+      <div class="card-feature">
+        <i class="fas fa-hand-middle-finger"></i>
+        <h4>Amandements et questions du députés</h4>
+        <p>
+          <strong>Amandements proposés :</strong>
+          <%= @depute_amendements_proposes %>
+        </p>
+        <p>
+          <strong>Amandements signés :</strong>
+          <%= @depute_amendements_signes %>
+        </p>
+        <p>
+          <strong>Questions écrites :</strong>
+          <%= @depute_questions_ecrites %>
+        </p>
+        <p>
+          <strong>Questions orales :</strong>
+          <%= @depute_question_orales %>
+        </p>
+      </div>
+    </div>
+    <div class="card-important-date">
+      <div class="card-feature">
+        <i class="fas fa-file-upload"></i>
+        <h4>Déclaration d'intérêts</h4>
+        </p>
+        <%= link_to "Consulter la déclaration d’intérêts & d’activités de #{@name}", "https://www.hatvp.fr/fiche-nominative/?declarant=roussel-cedric" %>
+      </div>
+    </div>
 </div>
