@@ -20,6 +20,8 @@ class LawsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @representative = Representative.find(params[:id])
+    @name = "#{@representative.first_name} #{@representative.last_name}"
   end
 
   def upvote
