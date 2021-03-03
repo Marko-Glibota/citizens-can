@@ -1,10 +1,12 @@
   <div class="grid-depute">
     <div class="card-photo-parti">
       <div class= "card-feature">
+        <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>"></canvas>
       </div>
     </div>
     <div class="card-mandats">
       <div class= "card-feature">
+        <canvas id="myBarChart" data-proposition-deposee="<%= @depute_propositions_ecrites %>" data-proposition-signee="<%= @depute_propositions_signees %>"></canvas>
       </div>
     </div>
     <div class="card-presence_an">
