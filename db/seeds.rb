@@ -129,7 +129,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         description: description,
         url: details,
         source: "Proposition",
-        author_type: "Auteur",
+        author_type: "auteur",
         author: auteur_name,
         id_an: auteur_id,
         date: creation_date
@@ -185,8 +185,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
         title: title, 
         description: description,
         url: details,
-        source: "Proposition",
-        author_type: "Auteur",
+        source: "Projet",
+        author_type: "rapporteur",
         author: rapporteur_name,
         id_an: rapporteur_id,
         date: creation_date
