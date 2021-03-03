@@ -44,8 +44,8 @@ districts = JSON.parse(districts_serialized)
   representatives["deputes"].each do |representative|
     id_pa = "PA#{representative["depute"]["id_an"]}"
     representative_instance = Representative.new(
-      first_name: representative["depute"]["nom_de_famille"],
-      last_name: representative["depute"]["prenom"],
+      first_name: representative["depute"]["prenom"],
+      last_name: representative["depute"]["nom_de_famille"],
       gender: representative["depute"]["sexe"],
       addresses: representative["depute"]["adresses"].flat_map(&:values),
       department_name: representative["depute"]["nom_circo"],

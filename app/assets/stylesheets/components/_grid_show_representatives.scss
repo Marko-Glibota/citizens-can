@@ -1,60 +1,142 @@
 .grid-depute {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 30px 0px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-columns: minmax(100px, auto);
 }
 
 .card-depute-photo {
   grid-column: 1;
-  grid-row: 1/4;
-  .img-photo {
-    height: 170px;
-    margin-bottom: 20px;
-    border-radius: 100px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    border: white 1px solid;
-    border-radius: 50%;
+  grid-row: 1 / 6;
+  position: sticky;
+  top: 10px;
+  .district-num-name {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .siege-hemicycle {
+    display: flex;
+    justify-content: center;
+  }
+  .nm-mandats {
+    display: flex;
+    justify-content: center;
+  }
+  .text-align {
+    text-align: start;
+    margin-left: 70px;
+  }
+  ul {
+    list-style: none;
+    padding: 10px;
+    li {
+      p {
+        margin: 0px;
+      }
+    }
   }
 }
 
 .card-mandats{
+  .card-show-representative {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    .nm-mandats {
+      .p-mandats {
+        display: flex;
+        justify-items: flex-start;
+      }
+    }
+    .doigt {
+
+    }
+  }
   grid-column: 2;
   grid-row: 1;
 }
 
 .card-presence_an {
   grid-column: 2;
-  grid-row: 2/4;
+  grid-row: 1 / 4;
+  .chart {
+    margin-top: 45px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    // height: 100%;
+  }
+  .pourcentage {
+    padding: 23px;
+    margin: 10px;
+  }
+  .precisions-chart {
+    display: flex;
+    position: relative;
+    p {
+      position: absolute;
+      top: 30px;
+      left: 8px;
+      font-size: 12px !important;
+    }
+  }
 }
 
 .card-propositions {
   grid-column: 3;
   grid-row: 1;
+  .chart-rectangle {
+    max-width: 300px;
+  }
+  .precisions-chart-rectangle {
+    position: relative;
+    p {
+      position: absolute;
+      font-size: 12px !important;
+      left: 81px;
+    }
+  }
 }
 
 .card-amendements-questions {
   grid-column: 3;
-  grid-row: 2/4;
+  grid-row: 2 / 4;
 }
 
 .card-infos {
   grid-column: 1;
-  grid-row: 5/7;
+  grid-row: 5 / 7;
 }
 
 .card-missions {
-  grid-column: 2/3;
-  grid-row: 5/7;
+  grid-column: 2 / 4;
+  grid-row: 4 / 6;
+  h4 {
+    margin-bottom: 30px;
+  }
+  ul {
+    list-style: none;
+  }
 }
 
 .card-collaborateurs {
-  grid-column: 1;
-  grid-row: 8/10;
+  grid-column: 1/2;
+  grid-row: 8 / 10;
 }
 
 .card-decla-interet {
-  grid-column: 2/3;
-  grid-row: 8/9;
+  grid-column: 2/4;
+  grid-row: 6 / 7;
+  h4 {
+    margin-bottom: 15px;
+  }
+  a {
+    color: #9a9292;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 14px;
+  }
 }
 
 .img-photo {
@@ -63,10 +145,55 @@
   border-radius: 100px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
-  border-radius: 50%;
+  border-radius: 5%;
+  margin-top: 15px;
 }
 
+.card-show-representative {
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 16px 24px;
+  text-align: center;
+  height: 100%;
+}
 
+.card-show-representative p {
+}
+
+.card-show-representative .fas {
+  display: inline-block;
+  color: #f38181;
+  font-size: 42px;
+  border: solid 1px #f38181;
+  border-radius: 50%;
+  padding: 20px 20px;
+}
+
+h4 {
+  padding-top: 10px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 31px;
+  background: #F0A984;
+  transition: 0.3s ease;
+  margin: 70px;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
+// #myChart {
+//   height: 20%;
+//   width: 20%;
+// }
 
 
 
