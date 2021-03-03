@@ -19,19 +19,14 @@
             <% end %>
           </p>
         </div>
-      </div>
-    </div>
-    <div class="card-mandats">
-      <div class= "card-show-representative">
-        <div class="doigt">
-          <i class="far fa-hand-point-right"></i>
-        </div>
-        <div class="nm-mandats">
-          <div class="p-mandat">
+          <div class="siege-hemicycle">
+            <p><strong>Place dans l'hémicycle :</strong></p>
+            <p>N°<%= @representative.seat_number %></p> 
+          </div>
+          <div class="nm-mandats">
+            <p>Nombre de mandats cumulés :</p>
             <p><strong><%= @depute_nb_mandats %></strong></p>
           </div>
-          <p>Nombre de mandats cumulés</p>
-        </div>
       </div>
     </div>
     <div class="card-presence_an">
@@ -39,13 +34,19 @@
         <h4>Présence hémicycles</h4>
          <div class="chart">
            <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>" width="200" height="100"></canvas>
+           <% pourcentage_presence = @depute_semaines_presence * 100 / 52 %>
+         </div>
+         <div class="pourcentage">
+           <p><%= pourcentage_presence %>% de présence à l'Assemblée</p>
+         </div>
+         <div class="precisions-chart">
+          <p><I>* Calculé en nombre de semaines </I></p>
          </div>
       </div>
     </div>
     <div class="card-propositions">
       <div class= "card-show-representative">
-        <p><strong><%= @depute_propositions_ecrites  %></strong> propositions écrites</p>
-        <p><strong><%= @depute_propositions_signees %></strong> propositions signées</p>
+        <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
       </div>
     </div>
     <div class="card-amendements-questions">
@@ -55,12 +56,6 @@
         <p><strong><%= @depute_amendements_signes %></strong> amendements signés</p>
         <p><strong><%= @depute_questions_ecrites %></strong> questions écrites</p>
         <p><strong><%= @depute_question_orales %></strong> questions orales</p>
-      </div>
-    </div>
-    <div class="card-infos">
-      <div class= "card-show-representative">
-        <strong><p><%= @representative.seat_number %></strong></p>
-        <p>Place dans l'hémicycle</p> 
       </div>
     </div>
     <div class="card-missions">
