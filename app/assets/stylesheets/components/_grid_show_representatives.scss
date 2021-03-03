@@ -102,6 +102,9 @@
 .card-amendements-questions {
   grid-column: 3;
   grid-row: 2 / 4;
+  h4 {
+    margin-bottom: 30px;
+  }
 }
 
 .card-infos {
@@ -117,6 +120,15 @@
   }
   ul {
     list-style: none;
+  }
+  .precisions-missions {
+    position: relative;
+    p {
+      font-size: 12px !important;
+      position: absolute;
+      bottom: 10px;
+      left: 530px;
+    }
   }
 }
 
