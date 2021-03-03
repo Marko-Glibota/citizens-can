@@ -20,13 +20,24 @@
           </p>
         </div>
           <div class="siege-hemicycle">
-            <p><strong>Place dans l'hémicycle :</strong></p>
-            <p>N°<%= @representative.seat_number %></p> 
+            <p><strong>Place dans l'hémicycle</strong></p>
+            <p>:    N°<%= @representative.seat_number %></p> 
           </div>
           <div class="nm-mandats">
-            <p>Nombre de mandats cumulés :</p>
-            <p><strong><%= @depute_nb_mandats %></strong></p>
+            <p><strong>Nombre de mandats cumulés  </strong></p>
+            <p>:    <%= @depute_nb_mandats %></p>
           </div>
+          <p><strong>Collaborateurs</strong></p>
+          <div class="text-align">
+            <ul>
+              <li><p><%= @representative.collaborators[0]  %></p></li>
+              <li><p><%= @representative.collaborators[1]  %></p></li>
+              <li><p><%= @representative.collaborators[2]  %></p></li>
+              <li><p><%= @representative.collaborators[3]  %></p></li>
+              <li><p><%= @representative.collaborators[4]  %></p></li>
+              <li><p><%= @representative.collaborators[5] %></p></li>
+            </ul>
+        </div>
       </div>
     </div>
     <div class="card-presence_an">
@@ -40,13 +51,18 @@
            <p><%= pourcentage_presence %>% de présence à l'Assemblée</p>
          </div>
          <div class="precisions-chart">
-          <p><I>* Calculé en nombre de semaines </I></p>
+          <p><I>* Nombre de semaines où le député a été relevé présent dans l'hémicycle sur les 12 derniers mois</I></p>
          </div>
       </div>
     </div>
     <div class="card-propositions">
       <div class= "card-show-representative">
-        <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+        <div class="chart-rectangle">
+          <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+        </div>
+        <div class="precisions-chart-rectangle">
+          <p><I>* Nombre de proposition depuis le 21 juin 2017</I></p>
+        </div>
       </div>
     </div>
     <div class="card-amendements-questions">
@@ -66,26 +82,11 @@
             <li>
               <p>
                 <%= responsabilite["responsabilite"]["organisme"] %>
-                ( <%= responsabilite["responsabilite"]["fonction"].capitalize %> depuis le <%= responsabilite["responsabilite"]["debut_fonction"] %> ) 
+                ( <strong><%= responsabilite["responsabilite"]["fonction"].capitalize %></strong> depuis le <I><%= responsabilite["responsabilite"]["debut_fonction"] %></I> ) 
               </p>
             </li>
           <% end %>
         </ul>
-      </div>
-    </div>
-    <div class="card-collaborateurs">
-      <div class= "card-show-representative">
-        <h4>Liste des collaborateurs</h4>
-        <div class="text-align">
-          <ul>
-            <li><p><%= @representative.collaborators[0]  %></p></li>
-            <li><p><%= @representative.collaborators[1]  %></p></li>
-            <li><p><%= @representative.collaborators[2]  %></p></li>
-            <li><p><%= @representative.collaborators[3]  %></p></li>
-            <li><p><%= @representative.collaborators[4]  %></p></li>
-            <li><p><%= @representative.collaborators[5] %></p></li>
-          </ul>
-        </div>
       </div>
     </div>
     <div class="card-decla-interet">

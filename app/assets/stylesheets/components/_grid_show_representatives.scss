@@ -1,7 +1,7 @@
 .grid-depute {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 30px 0px;
   grid-auto-rows: minmax(100px, auto);
   grid-auto-columns: minmax(100px, auto);
 }
@@ -9,15 +9,32 @@
 .card-depute-photo {
   grid-column: 1;
   grid-row: 1 / 6;
+  position: sticky;
+  top: 10px;
   .district-num-name {
     display: flex;
     justify-content: space-evenly;
   }
   .siege-hemicycle {
     display: flex;
+    justify-content: center;
   }
   .nm-mandats {
     display: flex;
+    justify-content: center;
+  }
+  .text-align {
+    text-align: start;
+    margin-left: 70px;
+  }
+  ul {
+    list-style: none;
+    padding: 10px;
+    li {
+      p {
+        margin: 0px;
+      }
+    }
   }
 }
 
@@ -60,8 +77,8 @@
     p {
       position: absolute;
       top: 30px;
-      left: 130px;
-      font: 12px;
+      left: 8px;
+      font-size: 12px !important;
     }
   }
 }
@@ -69,6 +86,17 @@
 .card-propositions {
   grid-column: 3;
   grid-row: 1;
+  .chart-rectangle {
+    max-width: 300px;
+  }
+  .precisions-chart-rectangle {
+    position: relative;
+    p {
+      position: absolute;
+      font-size: 12px !important;
+      left: 81px;
+    }
+  }
 }
 
 .card-amendements-questions {
@@ -84,6 +112,9 @@
 .card-missions {
   grid-column: 2 / 4;
   grid-row: 4 / 6;
+  h4 {
+    margin-bottom: 30px;
+  }
   ul {
     list-style: none;
   }
@@ -92,18 +123,20 @@
 .card-collaborateurs {
   grid-column: 1/2;
   grid-row: 8 / 10;
-  .text-align {
-    text-align: center;
-  }
-  ul {
-    list-style: none;
-    padding: 10px;
-  }
 }
 
 .card-decla-interet {
   grid-column: 2/4;
   grid-row: 6 / 7;
+  h4 {
+    margin-bottom: 15px;
+  }
+  a {
+    color: #9a9292;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 14px;
+  }
 }
 
 .img-photo {
@@ -112,7 +145,7 @@
   border-radius: 100px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
-  border-radius: 15%;
+  border-radius: 5%;
   margin-top: 15px;
 }
 
@@ -142,6 +175,20 @@ h4 {
 
 p {
   margin-top: 10px;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 31px;
+  background: #F0A984;
+  transition: 0.3s ease;
+  margin: 70px;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
 }
 // #myChart {
 //   height: 20%;
