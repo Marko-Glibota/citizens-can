@@ -11,6 +11,14 @@ nav {
   align-items: center;
 }
 
+.bar {
+  background: white;
+  height: 25px;
+  width: 2px;
+  border-radius: 1px;
+  margin-right: 24px;
+}
+
 .menu p, .menu a {
   font-size: 16px;
   color: #fff;
@@ -20,7 +28,28 @@ nav {
   font-weight: 200;
   text-transform: uppercase;
   text-decoration: none;
+  transition: all .3s ease;
+  &:hover{
+    text-decoration: none;
+    color: #ebebeb;
+  }
 }
+
+// .nav-link:hover {
+//   transform: scale(1.1)
+// }
+
+.nav-btn {
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all .3s ease;
+  &:hover {
+    border: 1px solid #ebebeb;
+  }
+}
+
+
 
 .menu .dropdown-menu {
   padding: 10px
@@ -34,10 +63,7 @@ nav {
   }
 }
 
-.menu a:hover {
-  text-decoration: none;
-  color: #f9f9f9;
-}
+
 
 #logo {
   font-family: 'Monoton', cursive;
@@ -49,18 +75,4 @@ nav {
   text-decoration: none;
 }
 
-.bar {
-  background: white;
-  height: 25px;
-  width: 2px;
-  border-radius: 1px;
-  margin-right: 24px;
-}
 
-.nav-link {
-  transition: all .2s ease-in-out;
-}
-
-.nav-link:hover {
-  transform: scale(1.1)
-}
