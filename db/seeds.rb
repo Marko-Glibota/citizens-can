@@ -111,8 +111,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('.liens-liste-embed a').attribute('href').value
-  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ") 
-  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
+  site_date = law.search('.liens-liste-embed li .heure').text.split(" ") 
+  creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
 
   html_file = open(details).read
   doc = Nokogiri::HTML(html_file)
@@ -135,7 +135,6 @@ doc.search('.liens-liste > li').first(30).each do |law|
         date: creation_date
         # representative_id: Representative.where(id_an: law.id_an)
       )
-      puts "created proposition!"
       law.save!
     end
   end
@@ -167,8 +166,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('a').attribute('href').value
-  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ")
-  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
+  site_date = law.search('.liens-liste-embed li .heure').text.split(" ")
+  creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
   
 
   html_file = open(details).read
@@ -192,7 +191,6 @@ doc.search('.liens-liste > li').first(30).each do |law|
         date: creation_date
         # representative_id: Representative.where(id_an: law.id_an)
       )
-      puts "created proposition!"
       law.save!
     end
   end
