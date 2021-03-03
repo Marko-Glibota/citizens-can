@@ -17,16 +17,16 @@
       <%= link_to "C'est partie!", new_user_registration_path, class: 'btn-orange' %>
     </div>
     <div class="card-feature">
-      <i class="fas fa-book-open"></i>
+      <i class="fas fa-university"></i>
       <h4>Etape II</h4>
-      <p>Tu as maintenant tous les outils entre tes mains pour t'informer</p>
+      <p>Parcours Citizens Can et découvre les lois en cours de conception!</p>
       <%= link_to "Allons-y!", laws_path, class: 'btn-orange' %>
     </div>
     <div class="card-feature">
       <i class="fas fa-user-graduate"></i>
       <h4>Etape III</h4>
-      <p>Bravo citoyen(ne) ! Bienvenue à Citizens Can, fais bon usage de ces informations</p>
-      <%= link_to "Promis!", laws_path, class: 'btn-orange' %>
+      <p>Bravo citoyen(ne) ! Bienvenue à Citizens Can, fais bon usage de ces informations.</p>
+      <%= link_to "Contacte ton député!", representative_path(current_user.district.representative), class: 'btn-orange' %>
     </div>
   </div>
 
