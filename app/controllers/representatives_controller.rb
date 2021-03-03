@@ -4,7 +4,32 @@ require 'rgeo/geo_json'
 require 'geokit'
 
 class RepresentativesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  include Pagy::Backend
   include ScrappingRepresentativeConcern
+
+  def index
+    
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @representatives = @representatives.where(sql_query, query: "%#{params[:query]}%")
+    else 
+      @representatives = Representative.all
+    end
+
+    @pagy, @representatives = pagy(@representatives, items: 30)
+
+    @representatives_lrem = @representatives.where(party_acronym: "LREM")
+    @representatives_mdda = @representatives.where(party_acronym: "MODEM")
+    @representatives_ae = @representatives.where(party_acronym: "AE")
+    @representatives_lr = @representatives.where(party_acronym: "LR")
+    @representatives_soc = @representatives.where(party_acronym: "SOC")
+    @representatives_udi = @representatives.where(party_acronym: "UDI")
+    @representatives_lt = @representatives.where(party_acronym: "LT")
+    @representatives_lfi = @representatives.where(party_acronym: "LFI")
+    @representatives_gdr = @representatives.where(party_acronym: "GDR")
+    @representatives_ni = @representatives.where(party_acronym: "NI")
+  end
 
   def show
     @representative = Representative.find(params[:id])

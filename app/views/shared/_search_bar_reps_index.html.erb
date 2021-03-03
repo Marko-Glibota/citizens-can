@@ -1,0 +1,8 @@
+<%= form_tag representatives_path, class: 'relative', method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "searchbar-laws",
+    placeholder: "Entrez un député..."
+  %>
+  <%= submit_tag "Cherchez", class: "btn-search-laws" %>
+<% end %>
