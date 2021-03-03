@@ -1,10 +1,11 @@
 <div class="banner_home">
   <%= render 'shared/navbar' %>
-  <div class="tagline">
-    <h1 class="title-1">Citizens Can</h1>
-    <p>Reprenez le pouvoir à l'Assemblée nationale</p>
-    <%= render 'shared/search_bar_representatives' %>
-  </div>
+    <div class="tagline">
+      <h1 class="title-1">Citizens Can</h1>
+      <p>Reprenez le pouvoir à l'Assemblée nationale</p>
+      <%= render 'shared/search_bar_representatives' %>
+    </div>
+    <%= image_tag 'banner.png', alt: "illustration Citizens", class: "illustration" %>
 </div>
 
 <div class="container">
@@ -26,7 +27,11 @@
       <i class="fas fa-user-graduate"></i>
       <h4>Etape III</h4>
       <p>Bravo citoyen(ne) ! Bienvenue à Citizens Can, fais bon usage de ces informations.</p>
-      <%= link_to "Contacte ton député!", representative_path(current_user.district.representative), class: 'btn-orange' %>
+      <% if user_signed_in? %>
+        <%= link_to "Contacte ton député!", representative_path(current_user.district.representative), class: 'btn-orange' %>
+      <% else %>
+        <a href="#" class="btn-orange">Fais ton Etape II!</a>
+      <% end %>
     </div>
   </div>
 

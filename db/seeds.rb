@@ -7,9 +7,11 @@ require 'nokogiri'
 
 puts "Destruction de la database"
 
+Comment.destroy_all
 Law.destroy_all
 Representative.destroy_all
 District.destroy_all
+User.destroy_all
 #Création district
 
 url = "https://static.data.gouv.fr/resources/carte-des-circonscriptions-legislatives-2012-et-2017/20170721-135742/france-circonscriptions-legislatives-2012.json"
@@ -44,8 +46,8 @@ districts = JSON.parse(districts_serialized)
   representatives["deputes"].each do |representative|
     id_pa = "PA#{representative["depute"]["id_an"]}"
     representative_instance = Representative.new(
-      first_name: representative["depute"]["nom_de_famille"],
-      last_name: representative["depute"]["prenom"],
+      first_name: representative["depute"]["prenom"],
+      last_name: representative["depute"]["nom_de_famille"],
       gender: representative["depute"]["sexe"],
       addresses: representative["depute"]["adresses"].flat_map(&:values),
       department_name: representative["depute"]["nom_circo"],
@@ -111,8 +113,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('.liens-liste-embed a').attribute('href').value
-  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ") 
-  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
+  site_date = law.search('.liens-liste-embed li .heure').text.split(" ") 
+  creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
 
   html_file = open(details).read
   doc = Nokogiri::HTML(html_file)
@@ -135,7 +137,6 @@ doc.search('.liens-liste > li').first(30).each do |law|
         date: creation_date
         # representative_id: Representative.where(id_an: law.id_an)
       )
-      puts "created proposition!"
       law.save!
     end
   end
@@ -167,8 +168,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
   num = title.match(/(N°.)(\d+)/)[2] if title.match(/(N°.)(\d+)/)
   description = law.search('p').text
   details = law.search('a').attribute('href').value
-  p site_date = law.search('.liens-liste-embed li .heure').text.split(" ")
-  p creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
+  site_date = law.search('.liens-liste-embed li .heure').text.split(" ")
+  creation_date = Date.parse("#{site_date[6]}/#{months[site_date[5].to_sym]}/#{site_date[4]}") if site_date != []
   
 
   html_file = open(details).read
@@ -192,7 +193,6 @@ doc.search('.liens-liste > li').first(30).each do |law|
         date: creation_date
         # representative_id: Representative.where(id_an: law.id_an)
       )
-      puts "created proposition!"
       law.save!
     end
   end
