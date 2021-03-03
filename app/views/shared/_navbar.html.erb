@@ -13,6 +13,7 @@
   <% else %>
     <div class="menu">
       <p class="nav-link">Manifesto</p>
+      <%= link_to "Députés", representatives_path, class: 'nav-link' %>
       <%= link_to "Lois", laws_path, class: 'nav-link' %>
       <div class="bar"></div>
       <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>

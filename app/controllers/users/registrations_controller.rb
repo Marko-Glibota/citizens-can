@@ -11,7 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    super do |resource|
+      district = ReturnDistrictFromAddress.new(resource.address).call
+      if district
+        resource.district = district
+        resource.save
+      end
+    end
   end
 
   # GET /resource/edit

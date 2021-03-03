@@ -9,10 +9,11 @@
 
   <% if current_user %>
    <div class="card-depute">
-        <h3>Interpelle ton député</h3>
-        <p> photo d'un député </p>
-        <p> nom du député </p>
-        <a href="<% link_to representative_path %>" class="btn-blue">Contacter</a>
+        <h3 class="mb-3">Interpelle ton député</h3>
+        <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{current_user.district.representative.slug}/250", alt: "Photo député", width: 100, class: "avatar-depute" %>
+        <%= current_user.district.representative.first_name %>
+        <%= current_user.district.representative.last_name %>
+        <%= link_to 'Contacter', representative_path(current_user.district.representative), :class => "btn-blue" %>
    </div>
     <% else %>
     <% end %>
