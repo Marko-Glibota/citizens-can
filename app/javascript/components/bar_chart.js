@@ -2,23 +2,28 @@ import Chart from 'chart.js';
 
 const initBarChart = () => {
   const ctx = document.getElementById("myBarChart");
-  const propositionDeposee = ctx.dataset.proposition.deposee;
-  const propositionSignee = ctx.dataset.proposition.signee;
-
-  const myBarChart = new Chart(ctx, {
-      type: 'horizontalBar',
-      data: {
-      datasets: [{
-          data: [],
-          backgroundColor: ["#f38181", "#E5E5E5"],
-      }],
-
-      // These labels appear in the legend and in the tooltips when hovering different arcs
-      labels: [
-          'Propositions déposées',
-          'Propositions signées',
+  const propositionsDeposees = ctx.dataset.deposees;
+  const propositionsSignees = ctx.dataset.signees;
+  const BarChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Propositions déposées", "Propositions signées"],
+      datasets: [
+        {
+          barThickness: 24,
+          maxBarThickness: 32,
+          backgroundColor: ["#f38181", "#EED489"],
+          data: [propositionsDeposees,propositionsSignees]
+        }
       ]
-  }
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: false,
+        text: 'Propositions de lois'
+      }
+    }
   });
 }
 
