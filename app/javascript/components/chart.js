@@ -3,12 +3,13 @@ import Chart from 'chart.js';
 const initChart = () => {
   const ctx = document.getElementById("myChart");
   const presence = ctx.dataset.presence;
+  const absence = 52 - presence;
 
   const myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
       datasets: [{
-          data: [presence, 52],
+          data: [presence,absence],
           backgroundColor: ["#f38181", "#E5E5E5"],
       }],
 
