@@ -1,18 +1,23 @@
 <div class="general-law">
     <div class="description-law">
       <h2><%= @law.title %></h2>
-      <a href="https://www.assemblee-nationale.fr/14/documents/pion-notice.asp" class="tag-law">
-        # <%= @law.source %> <a href="<%= @law.url %>" target="_blank" class="btn-law">Lire le PDF</a>
-      </a>
-     <p><%= @law.description %>.</p>
+      <div class="law-author">
+        <% if @law.author_type == "auteur" %>
+          <p><%= @law.source %> déposée par <%= @law.author%></p>
+        <% elsif @law.author_type == "rapporteur" %>
+          <p><%= @law.source %>, rapporteur : <%= @law.author%></p>
+        <% else %>
+        <% end %>
+        <a href="<%= @law.url %>" target="_blank" class="btn-law">Lire le PDF</a>
+      </div>
+      <p><%= @law.description %>.</p>
     </div>
 
   <% if current_user %>
    <div class="card-depute">
         <h3 class="mb-3">Interpelle ton député</h3>
         <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{current_user.district.representative.slug}/250", alt: "Photo député", width: 100, class: "avatar-depute" %>
-        <%= current_user.district.representative.first_name %>
-        <%= current_user.district.representative.last_name %>
+        <p class="m-top-10"><%= current_user.district.representative.first_name %> <%= current_user.district.representative.last_name %></p>
         <%= link_to 'Contacter', representative_path(current_user.district.representative), :class => "btn-blue" %>
    </div>
     <% else %>
