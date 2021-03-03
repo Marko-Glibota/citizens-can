@@ -4,6 +4,12 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  position:relative;
+  .illustration {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
 }
 
 .banner_home p {
@@ -14,3 +20,5 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+
+
