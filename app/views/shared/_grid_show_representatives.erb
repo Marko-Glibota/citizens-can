@@ -1,13 +1,12 @@
   <div class="grid-depute">
     <div class="card-depute-photo">
       <div class= "card-show-representative">
-        <div class="d-flex flex-row justify-content-start align-items-start p-3">
+        <div class="d-flex flex-column justify-content-center align-items-center p-3">
           <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
+          <h3 class="pt-0 black"><%= @name %></h3>
           <div class="district-num-name text-left pl-3">
-            <h3 class="pt-0 black"><%= @name %></h3>
             <div class="my-4">
               <p class="mb-0 mt-1"><%= @representative.party_acronym %></p>
-              <p class="mb-0 mt-1"><%= @representative.department_name %></p>
               <p class="mb-0 mt-1">
                 <%= @representative.district_num %>
                 <% if @representative.district_num == 1  %>
@@ -18,6 +17,8 @@
                   ème
                 <% end %>
               </p>
+              <p class="mb-0 mt-1"><%= @representative.department_name %></p>
+               <h4 class="black">Déclaration d'intérêts</h4>
             </div>
           </div>
         </div>
@@ -45,6 +46,8 @@
         <a class="btn-blue" href="">Contacter</a>
       </div>
     </div>
+    <div class="stats-important">
+    </div>
     <div class="card-presence_an">
       <div class= "card-show-representative d-flex flex-column justify-content-between">
         <div>
@@ -61,27 +64,16 @@
       </div>
     </div>
     <div class="card-propositions">
+    </div>
+    <div class="card-amendements-questions">
       <div class= "card-show-representative d-flex flex-column justify-content-between">
+        <h4>Propositions du député</h4>
         <div>
           <div class="chart-rectangle">
             <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
           </div>
         </div>
           <p class="infos-stats"><I>* Nombre de proposition des 12 derniers mois</I></p>
-      </div>
-    </div>
-    <div class="card-amendements-questions">
-      <div class= "card-show-representative text-center d-flex flex-column justify-content-between">
-        <div>
-          <h4 class="black">Activité du député</h4>
-          <div class="margin-align">
-            <p class="my-1 text-left"><strong><%= @depute_amendements_proposes %></strong> amendements proposés</p>
-            <p class="my-1 text-left"><strong><%= @depute_amendements_signes %></strong> amendements signés</p>
-            <p class="my-1 text-left"><strong><%= @depute_questions_ecrites %></strong> questions écrites</p>
-            <p class="my-1 text-left"><strong><%= @depute_question_orales %></strong> questions orales</p>
-          </div>
-        </div>
-          <p class="infos-stats"><I>* Nombre d'amendements et de questions des 12 derniers mois</I></p>
       </div>
     </div>
     <div class="card-missions">
@@ -102,10 +94,24 @@
         <p class="infos-stats"><I>* Toutes les missions encore en cours sur l'année 2021</I></p>
       </div>
     </div>
-    <div class="card-decla-interet">
-      <div class= "card-show-representative">
-        <h4 class="black">Déclaration d'intérêts</h4>
-        <%= link_to "Consulter la déclaration d'intérêts & d'activités de #{@name}", "https://www.hatvp.fr/fiche-nominative/?declarant=roussel-cedric" %>
+    <div class="contact_container">
+      <div class="contact_form flex-column">
+        <div class="d-flex justify-content-center mb-4">
+          <h3 class="black">Contacter votre député</h3>
+        </div>
+        <div class="d-flex justify-content-start">
+          <div class="information-contact">
+            <h3>Informations de contact</h3>
+            <p><i class="fas fa-envelope"></i> <%= @representative.email %></p>
+            <p><i class="fas fa-phone-alt"></i> 05 62 68 09 55</p>
+            <hr>
+          </div>
+          <div>
+            <h3 class="margin-b-40">Envoyer un message à <%= @representative.first_name %> <%= @representative.last_name %></h3>
+            <%= render 'shared/rep_contact_form' %>
+          </div>
+        </div>
       </div>
     </div>
+</div>
   </div>
