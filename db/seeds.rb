@@ -135,7 +135,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: auteur_name,
         id_an: auteur_id,
         date: creation_date,
-        representative_id: Representative.where(id_an: law_creation.id_an)
+        # representative_id: Representative.where(id_an: law_creation.id_an)
       )
       law_creation.save!
     end
@@ -192,7 +192,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: rapporteur_name,
         id_an: rapporteur_id,
         date: creation_date,
-        representative_id: Representatives.where(id_an == law_creation.id_an)
+        # representative_id: Representatives.where(id_an == law_creation.id_an)
         )
       law_creation.save!
     end
