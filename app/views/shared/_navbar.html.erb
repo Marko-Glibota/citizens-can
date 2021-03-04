@@ -6,9 +6,9 @@
         <%= link_to "Lois", laws_path, class: 'nav-link' %>
         <%= link_to "Députés", representatives_path, class: 'nav-link' %>
         <%= link_to "Mon député", representative_path(current_user.district.representative), class: 'nav-btn' %>
-        <%= image_tag("https://images.unsplash.com/photo-1546881963-ac8d67aee789?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=627&q=80", input_html: { id: "navbarDropdown" }, data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }, class: 'avatar dropdown-toggle') %>
+        <%= image_tag("https://www.fluidogroup.com/wp-content/uploads/2018/09/user-icon-silhouette-ae9ddcaf4a156a47931d5719ecee17b9-400x400.png", input_html: { id: "navbarDropdown" }, data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }, class: 'avatar dropdown-toggle') %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Se déconnecter", destroy_user_session_path(@user), method: :delete %>
+          <i class="fas fa-sign-out-alt"></i><%= link_to "    Déconnection", destroy_user_session_path(@user), method: :delete, class: 'text-capitalize' %>
         </div>
       </div>
   <% else %>
