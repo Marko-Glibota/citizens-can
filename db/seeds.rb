@@ -125,7 +125,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
     auteur_name = law.search('.nom-personne a').text
     
     if creation_date != nil
-      law = Law.new(
+      law_creation = Law.new(
         num: num,
         title: title, 
         description: description,
@@ -134,10 +134,10 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author_type: "auteur",
         author: auteur_name,
         id_an: auteur_id,
-        date: creation_date
-        # representative_id: Representative.where(id_an: law.id_an)
+        date: creation_date,
+        representative_id: Representative.where(id_an: law_creation.id_an)
       )
-      law.save!
+      law_creation.save!
     end
   end
 end
@@ -181,7 +181,8 @@ doc.search('.liens-liste > li').first(30).each do |law|
     rapporteur_name = law.search('.nom-personne a').text
 
     if creation_date != nil
-      law = Law.new(
+      @representatives = Representative.all
+      law_creation = Law.new(
         num: num,
         title: title, 
         description: description,
@@ -190,10 +191,10 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author_type: "rapporteur",
         author: rapporteur_name,
         id_an: rapporteur_id,
-        date: creation_date
-        # representative_id: Representative.where(id_an: law.id_an)
-      )
-      law.save!
+        date: creation_date,
+        representative_id: Representatives.where(id_an == law_creation.id_an)
+        )
+      law_creation.save!
     end
   end
 end
