@@ -12,6 +12,19 @@
 <div class="container">
 </div>
 
+<div id="contact_container">
+  <div class="contact_form">
+    <h3 class="margin-b-40">Envoyer un message à <%= @representative.first_name %> <%= @representative.last_name %></h3>
+    <%= render 'shared/rep_contact_form' %>
+  </div>
+  <div class="contact_info">
+    <h3 class="margin-b-40">Informations de contact</h3>
+    <p><i class="fas fa-envelope"></i> <%= @representative.email %></p>
+    <p><i class="fas fa-phone-alt"></i> 05 62 68 09 55</p>
+    <hr>
+    <p><%= @representative.addresses[0] %></p>
+  </div>
+</div>
 
 
 

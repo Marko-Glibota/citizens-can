@@ -32,7 +32,6 @@ import $ from 'jquery'
 import { initPlaces } from '../components/init_places';
 import { initChart } from '../components/chart';
 import { initBarChart } from '../components/bar_chart';
-import { buttonScroll } from '../components/button_scroll';
 
 window.$ = $
 
@@ -41,5 +40,4 @@ document.addEventListener('turbolinks:load', () => {
   initPlaces();
   initChart();
   initBarChart();
-  // initScroll();
 });
