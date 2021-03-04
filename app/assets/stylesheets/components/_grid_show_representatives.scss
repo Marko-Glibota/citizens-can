@@ -202,6 +202,69 @@ p {
   background: #1BCB7F;
   color: white;
 }
+
+
+.contact_container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-bottom: 40px;
+}
+
+.contact_form {
+  grid-column: 1;
+  grid-row: 1;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 40px 80px;
+}
+
+.contact_form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact_form form label {
+  margin-bottom: 10px;
+}
+
+.contact_form form input {
+  margin-bottom: 25px;
+}
+
+.contact_form textarea {
+  margin-bottom: 25px;
+  min-height: 150px;
+}
+
+.contact_form form input[type="submit"] {
+  background: linear-gradient(to right, #4756cc, #606eda);
+  background-size: 150% 100%;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 28px;
+}
+
+.contact_info {
+  grid-column: 2;
+  grid-row: 1;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 40px 80px;
+}
+
+.contact_info .fas {
+  color: #4756cc;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
 // #myChart {
 //   height: 20%;
 //   width: 20%;

@@ -1,0 +1,8 @@
+<%= form_tag user_request_representative_path(@representative), method: :post do %>
+   <%= label_tag(:o, "Objet :") %>
+   <%= text_field_tag(:o) %>
+    <%= label_tag(:m, "Message :") %>
+   <%= text_area_tag(:m) %>
+   <%= hidden_field_tag :user, @user.id %>
+   <%= submit_tag("Envoyer") %>
+<% end %>
