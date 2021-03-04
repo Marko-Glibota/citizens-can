@@ -125,7 +125,21 @@ doc.search('.liens-liste > li').first(30).each do |law|
     auteur_name = law.search('.nom-personne a').text
     
     if creation_date != nil
-      law = Law.new(
+      img_array = []
+      img_array << "https://www.actu-environnement.com/images/illustrations/breve/35166_large.jpg"
+      img_array << "https://media-exp1.licdn.com/dms/image/C4E1BAQGhVbo2nGUTVg/company-background_10000/0/1549039117898?e=2159024400&v=beta&t=tazZDKI3DRVKY_LGXDDWr5ASCL5CwbACjDw6mfispUo"
+      img_array << "https://img.20mn.fr/yJRDt54zRViCXAYNXb0J6w/814x360_assemblee-nationale-illustration.jpg"
+      img_array << "https://cdn-lejdd.lanmedia.fr/var/europe1/storage/images/lejdd/politique/assemblee-nationale-7-choses-a-savoir-sur-le-fauteuil-de-president-3749012/50000393-1-fre-FR/Assemblee-nationale-7-choses-a-savoir-sur-le-fauteuil-de-president.jpg"
+      img_array << "https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/patrimoine/palais-bourbon/bibliotheque-le-plafond/6690-4-fre-FR/bibliotheque-le-plafond.jpg"
+      img_array << "https://www.touteleurope.eu/fileadmin/_TLEv3/emploi_social/AN_dumping.jpg"
+      img_array << "https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/travail-parlementaire/une-seance-dans-l-hemicycle-de-l-assemblee-nationale/345237-1-fre-FR/une-seance-dans-l-hemicycle-de-l-assemblee-nationale.jpg"
+      img_array << "https://img-4.linternaute.com/kvSFNKKfTHLjrKZR0BXuRKdJNhQ=/1240x/smart/7e9ea50adfe4458b82c1a31859552184/ccmcms-linternaute/10578833.jpg"
+      img_array << "https://reporterre.net/local/cache-vignettes/L720xH480/arton22295-dec87.jpg?1613409946"
+      img_array << "https://www.letudiant.fr/static/uploads/mediatheque/EDU_EDU/3/3/2351133-rea-263949-032-580x310.jpg"
+      img_array << "https://img.aws.la-croix.com/2017/06/27/1200858482/LAssemblee-nationale-26-2017_0_729_486.jpg"
+      img_array << "https://club21siecle.org/wp-content/uploads/2020/09/assembl%C3%A9e-nationale.png"
+
+      law_creation = Law.new(
         num: num,
         title: title, 
         description: description,
@@ -134,10 +148,11 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author_type: "auteur",
         author: auteur_name,
         id_an: auteur_id,
-        date: creation_date
-        # representative_id: Representative.where(id_an: law.id_an)
+        date: creation_date,
+        photo: img_array.sample,
+        # representative_id: Representative.where(id_an: law_creation.id_an)
       )
-      law.save!
+      law_creation.save!
     end
   end
 end
@@ -181,7 +196,22 @@ doc.search('.liens-liste > li').first(30).each do |law|
     rapporteur_name = law.search('.nom-personne a').text
 
     if creation_date != nil
-      law = Law.new(
+      img_array = []
+      img_array << "https://www.actu-environnement.com/images/illustrations/breve/35166_large.jpg"
+      img_array << "https://media-exp1.licdn.com/dms/image/C4E1BAQGhVbo2nGUTVg/company-background_10000/0/1549039117898?e=2159024400&v=beta&t=tazZDKI3DRVKY_LGXDDWr5ASCL5CwbACjDw6mfispUo"
+      img_array << "https://img.20mn.fr/yJRDt54zRViCXAYNXb0J6w/814x360_assemblee-nationale-illustration.jpg"
+      img_array << "https://cdn-lejdd.lanmedia.fr/var/europe1/storage/images/lejdd/politique/assemblee-nationale-7-choses-a-savoir-sur-le-fauteuil-de-president-3749012/50000393-1-fre-FR/Assemblee-nationale-7-choses-a-savoir-sur-le-fauteuil-de-president.jpg"
+      img_array << "https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/patrimoine/palais-bourbon/bibliotheque-le-plafond/6690-4-fre-FR/bibliotheque-le-plafond.jpg"
+      img_array << "https://www.touteleurope.eu/fileadmin/_TLEv3/emploi_social/AN_dumping.jpg"
+      img_array << "https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/travail-parlementaire/une-seance-dans-l-hemicycle-de-l-assemblee-nationale/345237-1-fre-FR/une-seance-dans-l-hemicycle-de-l-assemblee-nationale.jpg"
+      img_array << "https://img-4.linternaute.com/kvSFNKKfTHLjrKZR0BXuRKdJNhQ=/1240x/smart/7e9ea50adfe4458b82c1a31859552184/ccmcms-linternaute/10578833.jpg"
+      img_array << "https://reporterre.net/local/cache-vignettes/L720xH480/arton22295-dec87.jpg?1613409946"
+      img_array << "https://www.letudiant.fr/static/uploads/mediatheque/EDU_EDU/3/3/2351133-rea-263949-032-580x310.jpg"
+      img_array << "https://img.aws.la-croix.com/2017/06/27/1200858482/LAssemblee-nationale-26-2017_0_729_486.jpg"
+      img_array << "https://club21siecle.org/wp-content/uploads/2020/09/assembl%C3%A9e-nationale.png"
+
+      @representatives = Representative.all
+      law_creation = Law.new(
         num: num,
         title: title, 
         description: description,
@@ -190,10 +220,11 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author_type: "rapporteur",
         author: rapporteur_name,
         id_an: rapporteur_id,
-        date: creation_date
-        # representative_id: Representative.where(id_an: law.id_an)
-      )
-      law.save!
+        date: creation_date,
+        photo: img_array.sample,
+        # representative_id: Representatives.where(id_an == law_creation.id_an)
+        )
+      law_creation.save!
     end
   end
 end

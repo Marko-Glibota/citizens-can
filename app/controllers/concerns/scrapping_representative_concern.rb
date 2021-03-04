@@ -36,10 +36,10 @@ module ScrappingRepresentativeConcern
     url = "https://www.nosdeputes.fr/synthese/data/json"
     activites_deputes_serialized = open(url).read
     activites_deputes = JSON.parse(activites_deputes_serialized)
-    activites_array = activites_deputes["deputes"]
+    @activites_array = activites_deputes["deputes"]
 
-    activites_array.each do |depute|
-      if depute["depute"]["id_an"] = @representative.id_an
+    @activites_array.each do |depute|
+      if depute["depute"]["id_an"] == @representative.id_an.split("PA").last
         @depute_nb_mandats = depute["depute"]["nb_mandats"]
         @depute_semaines_presence = depute["depute"]["semaines_presence"]
         @depute_comission_presences = depute["depute"]["commission_presences"]

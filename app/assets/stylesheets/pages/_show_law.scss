@@ -22,6 +22,9 @@
 
 .description-law {
   width: 75%;
+  p {
+    margin-right: 20px;
+  }
 }
 
 .law-author {
@@ -31,4 +34,10 @@
 
 .law-author a {
   display: inline-block;
+}
+
+.sign-in-to-com {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }

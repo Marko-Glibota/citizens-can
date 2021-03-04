@@ -1,83 +1,93 @@
   <div class="grid-depute">
     <div class="card-depute-photo">
       <div class= "card-show-representative">
-        <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
-        <h4><%= @name %></h4>
-        <p><%= @representative.party_acronym %></p>
-        <div class="district-num-name">
-          <p>
-            <%= @representative.department_name %>
-          </p>
-          <p>
-            <%= @representative.district_num %>
-            <% if @representative.district_num == 1  %>
-              ère
-            <% elsif @representative.district_num == 2 %>
-              nd
-            <% else %>
-              ème
-            <% end %>
-          </p>
-        </div>
-          <div class="siege-hemicycle">
-            <p><strong>Place dans l'hémicycle</strong></p>
-            <p>:    N°<%= @representative.seat_number %></p> 
+        <div class="d-flex flex-row justify-content-start align-items-start p-3">
+          <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
+          <div class="district-num-name text-left pl-3">
+            <h3 class="pt-0 black"><%= @name %></h3>
+            <div class="my-4">
+              <p class="mb-0 mt-1"><%= @representative.party_acronym %></p>
+              <p class="mb-0 mt-1"><%= @representative.department_name %></p>
+              <p class="mb-0 mt-1">
+                <%= @representative.district_num %>
+                <% if @representative.district_num == 1  %>
+                  ère
+                <% elsif @representative.district_num == 2 %>
+                  nd
+                <% else %>
+                  ème
+                <% end %>
+              </p>
+            </div>
           </div>
-          <div class="nm-mandats">
-            <p><strong>Nombre de mandats cumulés  </strong></p>
-            <p>:    <%= @depute_nb_mandats %></p>
-          </div>
-          <p><strong>Collaborateurs</strong></p>
-          <div class="text-align">
-            <ul>
-              <li><p><%= @representative.collaborators[0]  %></p></li>
-              <li><p><%= @representative.collaborators[1]  %></p></li>
-              <li><p><%= @representative.collaborators[2]  %></p></li>
-              <li><p><%= @representative.collaborators[3]  %></p></li>
-              <li><p><%= @representative.collaborators[4]  %></p></li>
-              <li><p><%= @representative.collaborators[5] %></p></li>
-            </ul>
         </div>
+        <div class="d-flex flex-column justify-content-start text-left pl-3">
+          <div class="d-flex">
+            <p  class="mt-0 mb-0 black">Place dans l'hémicycle</p>
+            <p class="mt-0 mb-0">:      N°<%= @representative.seat_number %></p> 
+          </div>
+          <div class="d-flex">
+            <p class="mt-0 mb-0 black">Nombre de mandats cumulés  </p>
+            <p class="mt-0 mb-0">:      <%= @depute_nb_mandats %></p>
+          </div>
+        </div>
+        <div class="d-flex flex-column text-left mt-2 pl-3">
+          <p class="m-0 black pb-2">Collaborateurs</p>
+          <ul>
+            <li><p><%= @representative.collaborators[0]  %></p></li>
+            <li><p><%= @representative.collaborators[1]  %></p></li>
+            <li><p><%= @representative.collaborators[2]  %></p></li>
+            <li><p><%= @representative.collaborators[3]  %></p></li>
+            <li><p><%= @representative.collaborators[4]  %></p></li>
+            <li><p><%= @representative.collaborators[5] %></p></li>
+          </ul>
+        </div>
+        <a class="btn-blue" href="">Contacter</a>
       </div>
     </div>
     <div class="card-presence_an">
-      <div class= "card-show-representative">
-        <h4>Présence hémicycles</h4>
-         <div class="chart">
-           <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>" width="200" height="100"></canvas>
-           <% pourcentage_presence = @depute_semaines_presence * 100 / 52 %>
+      <div class= "card-show-representative d-flex flex-column justify-content-between">
+        <div>
+          <h4 class="pt-3 black">Présence dans l'hémicycle</h4>
+          <div class="chart">
+            <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>" width="200" height="100"></canvas>
+            <% pourcentage_presence = @depute_semaines_presence * 100 / 52 %>
+          </div>
+          <div class="pourcentage">
+            <h4 class="black"><%= pourcentage_presence %>% de présence à l'Assemblée</h4>
+          </div>
          </div>
-         <div class="pourcentage">
-           <p><%= pourcentage_presence %>% de présence à l'Assemblée</p>
-         </div>
-         <div class="precisions-chart">
-          <p><I>* Nombre de semaines où le député a été relevé présent dans l'hémicycle sur les 12 derniers mois</I></p>
-         </div>
+          <p class="infos-stats"><I>* Nombre de semaines où le député a été relevé présent dans l'hémicycle sur les 12 derniers mois</I></p>
       </div>
     </div>
     <div class="card-propositions">
-      <div class= "card-show-representative">
-        <div class="chart-rectangle">
-          <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+      <div class= "card-show-representative d-flex flex-column justify-content-between">
+        <div>
+          <div class="chart-rectangle">
+            <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+          </div>
         </div>
-        <div class="precisions-chart-rectangle">
-          <p><I>* Nombre de proposition depuis le 21 juin 2017</I></p>
-        </div>
+          <p class="infos-stats"><I>* Nombre de proposition des 12 derniers mois</I></p>
       </div>
     </div>
     <div class="card-amendements-questions">
-      <div class= "card-show-representative">
-        <h4>Proactivité du député</h4>
-        <p><strong><%= @depute_amendements_proposes %></strong> amendements proposés</p>
-        <p><strong><%= @depute_amendements_signes %></strong> amendements signés</p>
-        <p><strong><%= @depute_questions_ecrites %></strong> questions écrites</p>
-        <p><strong><%= @depute_question_orales %></strong> questions orales</p>
+      <div class= "card-show-representative text-center d-flex flex-column justify-content-between">
+        <div>
+          <h4 class="black">Activité du député</h4>
+          <div class="margin-align">
+            <p class="my-1 text-left"><strong><%= @depute_amendements_proposes %></strong> amendements proposés</p>
+            <p class="my-1 text-left"><strong><%= @depute_amendements_signes %></strong> amendements signés</p>
+            <p class="my-1 text-left"><strong><%= @depute_questions_ecrites %></strong> questions écrites</p>
+            <p class="my-1 text-left"><strong><%= @depute_question_orales %></strong> questions orales</p>
+          </div>
+        </div>
+          <p class="infos-stats"><I>* Nombre d'amendements et de questions des 12 derniers mois</I></p>
       </div>
     </div>
     <div class="card-missions">
       <div class= "card-show-representative">
-        <h4>Missions en cours</h4>
-        <ul>
+        <h4 class="black">Missions en cours</h4>
+        <ul class="text-left mb-0 ml-0">
           <% @infos_perso_depute.first(2).each do |responsabilite| %>
             <li>
               <p>
@@ -89,12 +99,12 @@
         </ul>
       </div>
       <div class="precisions-missions"> 
-        <p><I>* Toutes les missions en cours sur l'année 2021</I></p>
+        <p class="infos-stats"><I>* Toutes les missions encore en cours sur l'année 2021</I></p>
       </div>
     </div>
     <div class="card-decla-interet">
       <div class= "card-show-representative">
-        <h4>Déclaration d'intérêts</h4>
+        <h4 class="black">Déclaration d'intérêts</h4>
         <%= link_to "Consulter la déclaration d'intérêts & d'activités de #{@name}", "https://www.hatvp.fr/fiche-nominative/?declarant=roussel-cedric" %>
       </div>
     </div>

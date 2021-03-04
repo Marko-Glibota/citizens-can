@@ -18,20 +18,51 @@ class RepresentativesController < ApplicationController
       @representatives = Representative.all
     end
 
-    @pagy, @representatives = pagy(@representatives, items: 30)
-
+    @representatives_count = @representatives.count
+    
     @representatives_lrem = @representatives.where(party_acronym: "LREM")
-    @representatives_mdda = @representatives.where(party_acronym: "MODEM")
-    @representatives_ae = @representatives.where(party_acronym: "AE")
-    @representatives_lr = @representatives.where(party_acronym: "LR")
-    @representatives_soc = @representatives.where(party_acronym: "SOC")
-    @representatives_udi = @representatives.where(party_acronym: "UDI")
-    @representatives_lt = @representatives.where(party_acronym: "LT")
-    @representatives_lfi = @representatives.where(party_acronym: "LFI")
-    @representatives_gdr = @representatives.where(party_acronym: "GDR")
-    @representatives_ni = @representatives.where(party_acronym: "NI")
-  end
+    @representatives_lrem_count = @representatives_lrem.count
+    @pagy_lrem, @representatives_lrem = pagy(@representatives_lrem, items: 42)
 
+    @representatives_mdda = @representatives.where(party_acronym: "MODEM")
+    @representatives_mdda_count = @representatives_mdda.count
+    @pagy_mdda, @representatives_mdda = pagy(@representatives_mdda, items: 42)
+
+    @representatives_ae = @representatives.where(party_acronym: "AE")
+    @representatives_ae_count = @representatives_ae.count
+    @pagy_ae, @representatives_ae = pagy(@representatives_ae, items: 6)
+
+    @representatives_lr = @representatives.where(party_acronym: "LR")
+    @representatives_lr_count = @representatives_lr.count
+    @pagy_lr, @representatives_lr = pagy(@representatives_lr, items: 6)
+
+    @representatives_soc = @representatives.where(party_acronym: "SOC")
+    @representatives_soc_count = @representatives_soc.count
+    @pagy_soc, @representatives_soc = pagy(@representatives_soc, items: 6)
+
+    @representatives_udi = @representatives.where(party_acronym: "UDI")
+    @representatives_udi_count = @representatives_udi.count
+    @pagy_udi, @representatives_udi = pagy(@representatives_udi, items: 6)
+
+    @representatives_lt = @representatives.where(party_acronym: "LT")
+    @representatives_lt_count = @representatives_lt.count
+    @pagy_lt, @representatives_lt = pagy(@representatives_lt, items: 6)
+
+    @representatives_lfi = @representatives.where(party_acronym: "LFI")
+    @representatives_lfi_count = @representatives_lfi.count
+    @pagy_lfi, @representatives_lfi = pagy(@representatives_lfi, items: 6)
+
+    @representatives_gdr = @representatives.where(party_acronym: "GDR")
+    @representatives_gdr_count = @representatives_gdr.count
+    @pagy_gdr, @representatives_gdr = pagy(@representatives_gdr, items: 6)
+
+    @representatives_ni = @representatives.where(party_acronym: "NI")
+    @representatives_ni_count = @representatives_ni.count
+    @pagy_ni, @representatives_ni = pagy(@representatives_ni, items: 6)
+    
+    @pagy, @representatives = pagy(@representatives)
+  end
+  
   def show
     @representative = Representative.find(params[:id])
     @name = "#{@representative.first_name} #{@representative.last_name}"
