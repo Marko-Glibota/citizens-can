@@ -27,7 +27,6 @@
           </div>
           <% end %>
       <% end %>
-
     </div>
 
       <div class="comments">
@@ -102,32 +101,32 @@
    </div>
 </div>
 
-      <div class="form-login">
-        <div class="title-message text-center">
-          <i class="fas fa-comment-dots"></i> <h2>Poster un message </h2>
-        </div>
+<div class="form-login">
+  <div class="title-message text-center">
+    <i class="fas fa-comment-dots"></i> <h2>Poster un message </h2>
+  </div>
 
-          <%= simple_form_for [ @law, @comment ] do |f| %>
-            <div class="form-inputs">
-              <%= f.input :voting_status,
-                          collection: Comment::VOTE,
-                          label: "Tu es :",
-                          as: :radio_buttons,
-                          required: true %>
-              <%= f.input :content, label: "Ton message", placeholder: "Ecrivez votre message" %>
-            </div>
-
-            <% if user_signed_in? %>
-            <div class="form-actions text-center">
-              <%= f.submit "Ajouter un commentaire", class: 'btn-blue'%>
-            </div>
-            <% else %>
-            <div class="form-actions text-center">
-              <%= link_to "Connecte-toi pour écrir un message!", new_user_session_path, class: 'btn-blue' %>
-            </div>
-            <% end %>
-          <% end %>
+    <%= simple_form_for [ @law, @comment ] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :voting_status,
+                    collection: Comment::VOTE,
+                    label: "Tu es :",
+                    as: :radio_buttons,
+                    required: true %>
+        <%= f.input :content, label: "Ton message", placeholder: "Ecrivez votre message" %>
       </div>
+
+      <% if user_signed_in? %>
+      <div class="form-actions text-center">
+        <%= f.submit "Ajouter un commentaire", class: 'btn-blue'%>
+      </div>
+      <% else %>
+      <div class="form-actions text-center">
+        <%= link_to "Connecte-toi pour écrir un message!", new_user_session_path, class: 'btn-blue' %>
+      </div>
+      <% end %>
+    <% end %>
+</div>
 
 
 
