@@ -20,26 +20,20 @@ class LawsController < ApplicationController
 
   def show
     @comment = Comment.new
-  end
-
-  def upvote
-    @law.upvote_from current_user
-    redirect_to laws_path
-  end
-
-  def downvote
-    @law.downvote_from current_user
-    redirect_to laws_path
+    @upvote_count = @law.get_upvotes.size
+    @downvote_count = @law.get_downvotes.size
   end
 
   def for
     @law.upvote_from current_user
-    redirect_to law_path(@law)
+    @upvote_count = @law.get_upvotes.size
+    @downvote_count = @law.get_downvotes.size
   end
 
   def against
     @law.downvote_from current_user
-    redirect_to law_path(@law)
+    @upvote_count = @law.get_upvotes.size
+    @downvote_count = @law.get_downvotes.size
   end
 
   private
