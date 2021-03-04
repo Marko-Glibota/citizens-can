@@ -17,7 +17,7 @@ class RepresentativesController < ApplicationController
     else
       @representatives = Representative.all
     end
-
+    
     @representatives_count = @representatives.count
     
     @representatives_lrem = @representatives.where(party_acronym: "LREM")
@@ -60,7 +60,7 @@ class RepresentativesController < ApplicationController
     @representatives_ni_count = @representatives_ni.count
     @pagy_ni, @representatives_ni = pagy(@representatives_ni, items: 6)
     
-    @pagy, @representatives = pagy(@representatives)
+    @pagy, @representatives = pagy(@representatives, items: 42)
   end
   
   def show
