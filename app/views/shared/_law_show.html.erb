@@ -17,7 +17,9 @@
    <div class="card-depute">
         <h3 class="mb-3">Interpelle ton député</h3>
         <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{current_user.district.representative.slug}/250", alt: "Photo député", width: 100, class: "avatar-depute" %>
-        <p class="m-top-10"><%= current_user.district.representative.first_name %> <%= current_user.district.representative.last_name %></p>
+        <p class="m-top-10"> <strong><%= current_user.district.representative.first_name %> <%= current_user.district.representative.last_name %> </p></strong>
+        <p class="m-0"> Son parti : <strong><%= current_user.district.representative.party_acronym %></strong> </p>
+        <p class="m-0"> Son département : <strong><%= current_user.district.representative.department_name %></strong></p>
         <%= link_to 'Contacter', representative_path(current_user.district.representative), :class => "btn-blue" %>
    </div>
     <% else %>

@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  VOTE = ["Pour", "Contre"]
+  VOTE = ["pour", "contre"]
   belongs_to :user
   belongs_to :law
   validates :content, presence: true

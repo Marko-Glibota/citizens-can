@@ -8,37 +8,37 @@
 
 <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="all-reps-tab" data-toggle="tab" href="#all-reps" role="tab" aria-controls="all-reps" aria-selected="true">Tous les députés</a>
+    <a class="nav-link active" id="all-reps-tab" data-toggle="tab" href="#all-reps" role="tab" aria-controls="all-reps" aria-selected="true">Tous les députés (<%=@representatives_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="lrem-tab" data-toggle="tab" href="#lrem" role="tab" aria-controls="lrem" aria-selected="false">LREM</a>
+    <a class="nav-link" id="lrem-tab" data-toggle="tab" href="#lrem" role="tab" aria-controls="lrem" aria-selected="false">LREM (<%=@representatives_lrem_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="mdda-tab" data-toggle="tab" href="#mdda" role="tab" aria-controls="mdda" aria-selected="false">MDDA</a>
+    <a class="nav-link" id="mdda-tab" data-toggle="tab" href="#mdda" role="tab" aria-controls="mdda" aria-selected="false">MDDA (<%=@representatives_mdda_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ae-tab" data-toggle="tab" href="#ae" role="tab" aria-controls="ae" aria-selected="false">AE</a>
+    <a class="nav-link" id="ae-tab" data-toggle="tab" href="#ae" role="tab" aria-controls="ae" aria-selected="false">AE (<%=@representatives_ae_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="lr-tab" data-toggle="tab" href="#lr" role="tab" aria-controls="lr" aria-selected="false">LR</a>
+    <a class="nav-link" id="lr-tab" data-toggle="tab" href="#lr" role="tab" aria-controls="lr" aria-selected="false">LR (<%=@representatives_lr_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="soc-tab" data-toggle="tab" href="#soc" role="tab" aria-controls="soc" aria-selected="false">SOC</a>
+    <a class="nav-link" id="soc-tab" data-toggle="tab" href="#soc" role="tab" aria-controls="soc" aria-selected="false">SOC (<%=@representatives_soc_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="udi-tab" data-toggle="tab" href="#udi" role="tab" aria-controls="udi" aria-selected="false">UDI</a>
+    <a class="nav-link" id="udi-tab" data-toggle="tab" href="#udi" role="tab" aria-controls="udi" aria-selected="false">UDI (<%=@representatives_udi_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="lt-tab" data-toggle="tab" href="#lt" role="tab" aria-controls="lt" aria-selected="false">LT</a>
+    <a class="nav-link" id="lt-tab" data-toggle="tab" href="#lt" role="tab" aria-controls="lt" aria-selected="false">LT (<%=@representatives_lt_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="lfi-tab" data-toggle="tab" href="#lfi" role="tab" aria-controls="lfi" aria-selected="false">LFI</a>
+    <a class="nav-link" id="lfi-tab" data-toggle="tab" href="#lfi" role="tab" aria-controls="lfi" aria-selected="false">LFI (<%=@representatives_lfi_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="gdr-tab" data-toggle="tab" href="#gdr" role="tab" aria-controls="gdr" aria-selected="false">GDR</a>
+    <a class="nav-link" id="gdr-tab" data-toggle="tab" href="#gdr" role="tab" aria-controls="gdr" aria-selected="false">GDR (<%=@representatives_gdr_count%>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ni-tab" data-toggle="tab" href="#ni" role="tab" aria-controls="ni" aria-selected="false">NI</a>
+    <a class="nav-link" id="ni-tab" data-toggle="tab" href="#ni" role="tab" aria-controls="ni" aria-selected="false">NI (<%=@representatives_ni_count%>)</a>
   </li>
 </ul>
 
@@ -62,103 +62,103 @@
   </div>
 
     <div class="tab-pane fade mt-5" id="lrem" role="tabpanel" aria-labelledby="lrem-tab">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lrem } %>
       <div class= "card-rep-container">
       <% @representatives_lrem.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lrem } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="mdda" role="tabpanel" aria-labelledby="mddatab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_mdda } %>
       <% @representatives_mdda.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_mdda } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="ae" role="tabpanel" aria-labelledby="ae-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_ae } %>
       <% @representatives_ae.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_ae } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="lr" role="tabpanel" aria-labelledby="lr-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lr } %>
       <% @representatives_lr.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lr } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="soc" role="tabpanel" aria-labelledby="soc-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_soc } %>
       <% @representatives_soc.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_udi } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="udi" role="tabpanel" aria-labelledby="udi-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_udi } %>
       <% @representatives_udi.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_udi } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="lt" role="tabpanel" aria-labelledby="lt-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lt } %>
       <% @representatives_lt.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lt } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="lfi" role="tabpanel" aria-labelledby="lfi-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lfi } %>
       <% @representatives_lfi.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_lfi } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="gdr" role="tabpanel" aria-labelledby="gdr-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_gdr } %>
       <% @representatives_gdr.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_gdr } %>
     </div>
 
     <div class="tab-pane fade mt-5" id="ni" role="tabpanel" aria-labelledby="ni-tab">
       <div class= "card-rep-container">
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_ni } %>
       <% @representatives_ni.each do |representative| %>
       <%= render 'shared/card_representative', representative: representative %>
       <% end %>
       </div>
-      <%= render partial: 'shared/pagination', locals: { pagy: @pagy } %>
+      <%= render partial: 'shared/pagination', locals: { pagy: @pagy_ni } %>
     </div>
 </div>
 

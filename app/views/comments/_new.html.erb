@@ -10,15 +10,25 @@
         <h3>Arguments <strong>pour</strong></h3>
         <i class="fas fa-vote-yea"></i> <%= @law.get_upvotes.size %>
       </div>
-      <%= link_to for_law_path(@law), class: "like", method: :put do %>
+      
+      <% if user_signed_in? %>
+         <%= link_to for_law_path(@law), class: "like", method: :put do %>
           <div class="btn-like for">
             <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
           </div>
           <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <div class="btn-like for">
+            <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
+          </div>
+          <% end %>
+      <% end %>
+     
     </div>
 
       <div class="comments">
-     <% if @law.comments.where(voting_status: "Pour").count == 0 %>
+     <% if @law.comments.where(voting_status: "pour").count == 0 %>
 
         <div class="message">
           <%= image_tag('empty-chat.png', height: '300', width: '300') %>
@@ -26,12 +36,12 @@
           <p class="mb-1"> Vous pouvez poster le premier message !</p>
         </div>
        <% else %>
-          <% @law.comments.where(voting_status: "Pour").each do |comment| %>
+          <% @law.comments.where(voting_status: "pour").order("comments.created_at desc").each do |comment| %>
           <p class="mb-2 mt-3">
             <%= comment.user.first_name.capitalize %>
             <%= comment.user.last_name.capitalize %>
           </p>
-            <i class="far fa-clock"> <%= comment.user.created_at %> </i>
+            <i class="far fa-clock"> <%= I18n.l(comment.user.created_at, format: '%d %B %Y - %H:%M', locale: :fr) %> </i>
             <div class="forum-content">
               <%= comment.content %>
             </div>
@@ -47,27 +57,36 @@
           <h3>Arguments <strong>contre</strong></h3>
           <i class="fas fa-vote-yea"></i>  <%= @law.get_downvotes.size %>
         </div>
-       <%= link_to against_law_path(@law), class: "like", method: :put do %>
-        <div class="btn-like">
-          <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
-        </div>
+        
+        <% if user_signed_in? %>
+        <%= link_to against_law_path(@law), class: "like", method: :put do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
+          </div>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_session_path do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
+          </div>
+        <% end %>
         <% end %>
       </div>
 
         <div class="comments">
-          <% if @law.comments.where(voting_status: "Contre").count == 0 %>
+          <% if @law.comments.where(voting_status: "contre").count == 0 %>
             <div class="message">
               <%= image_tag('empty-chat.png', height: '300', width: '300') %>
               <h3 class="mb-2">Il n'y a pas de messages</h3>
               <p class="mb-1"> Vous pouvez poster le premier message !</p>
             </div>
           <% else %>
-           <% @law.comments.where(voting_status: "Contre").each do |comment| %>
+           <% @law.comments.where(voting_status: "contre").each do |comment| %>
             <p class="mb-2 mt-3">
             <%= comment.user.first_name.capitalize %>
             <%= comment.user.last_name.capitalize %>
             </p>
-              <i class="far fa-clock"> <%= comment.user.created_at %> </i>
+              <i class="far fa-clock"> <%= comment.user.created_at.strftime('%d %B %Y - %H:%M')%> </i>
                 <div class="forum-content">
                   <%= comment.content %>
                 </div>
@@ -82,19 +101,25 @@
           <i class="fas fa-comment-dots"></i> <h2>Poster un message </h2>
         </div>
 
-          <%= simple_form_for [ @law, @comment ], html: {class: 'form-horizontal'} do |f| %>
+          <%= simple_form_for [ @law, @comment ] do |f| %>
             <div class="form-inputs">
               <%= f.input :voting_status,
                           collection: Comment::VOTE,
                           label: "Tu es :",
                           as: :radio_buttons,
-                          required: true,
-                          autofocus: true %>
-              <%= f.input :content, label: "Ton message"%>
+                          required: true %>
+              <%= f.input :content, label: "Ton message", placeholder: "Ecrivez votre message" %>
             </div>
+            
+            <% if user_signed_in? %>
             <div class="form-actions text-center">
               <%= f.submit "Ajouter un commentaire", class: 'btn-blue'%>
+            </div>     
+            <% else %>
+            <div class="form-actions text-center">
+              <%= link_to "Connecte-toi pour écrir un message!", new_user_session_path, class: 'btn-blue' %>
             </div>
+            <% end %>
           <% end %>
       </div>
 
