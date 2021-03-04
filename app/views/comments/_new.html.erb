@@ -10,11 +10,21 @@
         <h3>Arguments <strong>pour</strong></h3>
         <i class="fas fa-vote-yea"></i> <%= @law.get_upvotes.size %>
       </div>
-      <%= link_to for_law_path(@law), class: "like", method: :put do %>
+      
+      <% if user_signed_in? %>
+         <%= link_to for_law_path(@law), class: "like", method: :put do %>
           <div class="btn-like for">
             <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
           </div>
           <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <div class="btn-like for">
+            <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
+          </div>
+          <% end %>
+      <% end %>
+     
     </div>
 
       <div class="comments">
@@ -47,10 +57,19 @@
           <h3>Arguments <strong>contre</strong></h3>
           <i class="fas fa-vote-yea"></i>  <%= @law.get_downvotes.size %>
         </div>
-       <%= link_to against_law_path(@law), class: "like", method: :put do %>
-        <div class="btn-like">
-          <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
-        </div>
+        
+        <% if user_signed_in? %>
+        <%= link_to against_law_path(@law), class: "like", method: :put do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
+          </div>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_session_path do %>
+          <div class="btn-like">
+            <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
+          </div>
+        <% end %>
         <% end %>
       </div>
 
@@ -91,9 +110,16 @@
                           required: true %>
               <%= f.input :content, label: "Ton message", placeholder: "Ecrivez votre message" %>
             </div>
+            
+            <% if user_signed_in? %>
             <div class="form-actions text-center">
               <%= f.submit "Ajouter un commentaire", class: 'btn-blue'%>
+            </div>     
+            <% else %>
+            <div class="form-actions text-center">
+              <%= link_to "Connecte-toi pour écrir un message!", new_user_session_path, class: 'btn-blue' %>
             </div>
+            <% end %>
           <% end %>
       </div>
 
