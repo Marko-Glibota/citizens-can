@@ -1,11 +1,10 @@
 <%= link_to law_path(law) do %>
   <div class="card-law">
-    <img src="https://www2.assemblee-nationale.fr/var/ezflow_site/storage/images/media/travail-parlementaire/une-seance-dans-l-hemicycle-de-l-assemblee-nationale/345237-1-fre-FR/une-seance-dans-l-hemicycle-de-l-assemblee-nationale.jpg" />
+    <img src=<%=@img_array.sample%> />
     <div class="card-law-infos">
       <div>
         <h4><%= law.title %></h4>
-        <p><%= law.date %></p>
-        <p class="card-law-type"><%= law.source %></p>
+        <p>#<%= law.source %> du <%= I18n.l(law.date, format: '%A, %d %b %Y', locale: :fr) %></p>
         <p><%= law.description %></p>
       </div>
       <div class="card-law-votes">
