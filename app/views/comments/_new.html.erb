@@ -8,13 +8,16 @@
     <div class="title-argument">
       <div class="vote-argument">
         <h3>Arguments <strong>pour</strong></h3>
-        <i class="fas fa-vote-yea"></i> <%= @law.get_upvotes.size %>
+        <i class="fas fa-vote-yea" id="for_count"></i>
+        <span id="upvotes">
+          <%= render 'comments/upvotes', count: @upvote_count %>
+        </span>
       </div>
-      <%= link_to for_law_path(@law), class: "like", method: :put do %>
-          <div class="btn-like for">
-            <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
-          </div>
-          <% end %>
+      <%= link_to for_law_path(@law), class: "like", remote: true do %>
+        <div class="btn-like for">
+          <i class="far fa-thumbs-up"> </i> je suis <strong>pour</strong>
+        </div>
+      <% end %>
     </div>
 
       <div class="comments">
@@ -45,9 +48,12 @@
       <div class="title-argument">
         <div class="vote-argument">
           <h3>Arguments <strong>contre</strong></h3>
-          <i class="fas fa-vote-yea"></i>  <%= @law.get_downvotes.size %>
+          <i class="fas fa-vote-yea"></i>
+          <span id="downvotes">
+            <%= render 'comments/downvotes', count: @downvote_count %>
+          </span>
         </div>
-       <%= link_to against_law_path(@law), class: "like", method: :put do %>
+       <%= link_to against_law_path(@law), class: "like", remote: true do %>
         <div class="btn-like">
           <i class="far fa-thumbs-down"> </i> je suis <strong>contre</strong>
         </div>
