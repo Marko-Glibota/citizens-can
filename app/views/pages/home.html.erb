@@ -2,7 +2,7 @@
   <%= render 'shared/navbar' %>
     <div class="tagline">
       <h1 class="title-1">Citizens Can</h1>
-      <p>Reprenez le pouvoir à l'Assemblée nationale</p>
+      <p>Application de vote citoyen pour une démocratie<br>directe & participative</p>
       <%= render 'shared/search_bar_representatives' %>
     </div>
     <a href="#section1" id="scroll-button"><i  class="fas fa-arrow-circle-down"></i></a>
@@ -10,38 +10,39 @@
 </div>
 
 <div class="container" id="section1">
-  <h2 class="title-2 ">Bonjour !</h2>
+  <h2 class="title-2 ">Reprends le pouvoir</h2>
   <div class="presentation">
     <div class="card-feature">
      <i class="far fa-address-card"></i>
-      <h4>Etape I</h4>
-      <p>Crée-toi un compte pour être relié automatiquement à ton député!</p>
-      <%= link_to "C'est partie!", new_user_registration_path, class: 'btn-orange' %>
+      <h4>Étape 1</h4>
+      <p>Crée ton compte pour<br>suivre l'activité de ton député et voter.</p>
+      <%= link_to "Créer un compte", new_user_registration_path, class: 'btn-orange' %>
     </div>
     <div class="card-feature">
       <i class="fas fa-university"></i>
-      <h4>Etape II</h4>
-      <p>Parcours Citizens Can et découvre<br> les lois en cours de conception!</p>
-      <%= link_to "Allons-y!", laws_path, class: 'btn-orange' %>
+      <h4>Étape 2</h4>
+      <p>Parcours Citizens Can et découvre<br> les lois en cours de conception.</p>
+      <%= link_to "Découvrir les lois", laws_path, class: 'btn-orange' %>
     </div>
     <div class="card-feature">
       <i class="fas fa-user-graduate"></i>
-      <h4>Etape III</h4>
-      <p>Bravo citoyen(ne) ! Bienvenue à Citizens Can, fais bon usage de ces informations.</p>
+      <h4>Étape 3</h4>
+      <p>Suit l'activité de ton député et vote<br>pour ou contre les futures lois.</p>
       <% if user_signed_in? %>
-        <%= link_to "Contacte ton député!", representative_path(current_user.district.representative), class: 'btn-orange' %>
+        <%= link_to "Voir mon député", representative_path(current_user.district.representative), class: 'btn-orange' %>
       <% else %>
         <a href="#" class="btn-orange">Fais ton Etape II!</a>
       <% end %>
     </div>
   </div>
 
-  <div class="d-flex flex-wrap flex-row justify-content-center align-items-start py-5 my-5">
+  <div class="d-flex flex-wrap flex-row justify-content-center align-items-start py-5 my-5" id="home-text">
 
     <!-- Première ligne -->
     <div class="w-50 p-5 my-3">
       <h3 class="title-3">S'informer</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor dignissim sodales. Proin sed rutrum lectus. Etiam libero justo, tristique vitae vulputate vulputate, lacinia in nulla. Ut a velit vitae dui lobortis aliquet.</p>
+      <p class="m-top-30">Sur Citizens Can, tu peux facilement trouver des informations sur les lois en cours de conception à l'Assemblée nationale et suivre l'activité des parlementaires.</p>
+      <p>L'information sur le fonctionnement de l'Assemblée nationale doit être la plus claire et simple d'accès possible afin de garantir le bon fonctionnement de notre démocratie et la bonne representativité des citoyennes et citoyens.</p>
     </div>
     <div class="w-50 p-5 my-3">
       <%= image_tag 'sinformer.png', alt: "illustration sinformer", class: "w-100 h-300px radius-10px object-fit-cover" %>
@@ -53,13 +54,15 @@
     </div>
     <div class="w-50 p-5 my-3">
       <h3 class="title-3">Echanger</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor dignissim sodales. Proin sed rutrum lectus. Etiam libero justo, tristique vitae vulputate vulputate, lacinia in nulla. Ut a velit vitae dui lobortis aliquet.</p>
+      <p class="m-top-30">Le débat d'idées, lorsqu'il est mené de façon constructive et respectueuse, fait progresser la démocratie. Sur Citizens Can, tu peux ainsi échanger facilement avec les autres citoyennes et citoyens inscrits sur la plateforme.</p>
+      <p>L'idée est également de permettre à chacun de se forger une opinion en prenant connaissance d'avis divergeants sur une loi, en amont de son vote à l'Assemblée nationale.</p>
     </div>
 
     <!-- Troisième ligne -->
     <div class="w-50 p-5 my-3">
       <h3 class="title-3">Agir</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor dignissim sodales. Proin sed rutrum lectus. Etiam libero justo, tristique vitae vulputate vulputate, lacinia in nulla. Ut a velit vitae dui lobortis aliquet.</p>
+      <p class="m-top-30">Sur Citizens Can, tu peux voter pour ou contre une proposition de loi, avant qu'elle ne soit débatue à l'Assemblée nationale. C'est donc l'occasion de faire entendre ta voix et de faire pression sur les élus pour qu'ils suivent le vote populaire.</p>
+      <p>Tu peux également interpeller ton député et lui envoyer facilement des messages afin de recréer un lien entre les députés et les citoyennes et citoyens qu'ils représentent.</p>
     </div>
     <div class="w-50 p-5 my-3">
       <img src="https://img.lemde.fr/2019/10/06/168/0/3500/1750/1600/800/60/0/5cec1f1_GDN06_FRANCE-REFORM-IVF-PROTEST_1006_11.JPG" alt="" class="w-100 h-300px radius-10px object-fit-cover">
