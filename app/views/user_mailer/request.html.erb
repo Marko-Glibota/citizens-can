@@ -1,0 +1,9 @@
+<% if @representative.gender == "H" %>
+  <p>Bonjour M. <%= @representative.first_name %> <%= @representative.last_name %>,</p>
+<% elsif @representative.gender == "F" %>
+  <p>Bonjour Mme <%= @representative.first_name %> <%= @representative.last_name %>,</p>
+<% else %>
+  <p><%= @message %></p>
+<% end %>
+<p>Cordialement,</p>
+

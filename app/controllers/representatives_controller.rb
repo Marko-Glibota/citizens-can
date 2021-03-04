@@ -10,11 +10,11 @@ class RepresentativesController < ApplicationController
 
   def index
     @representatives = Representative.all
-    
+
     if params[:query].present?
       sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
       @representatives = @representatives.where(sql_query, query: "%#{params[:query]}%")
-    else 
+    else
       @representatives = Representative.all
     end
 
@@ -68,7 +68,17 @@ class RepresentativesController < ApplicationController
     @name = "#{@representative.first_name} #{@representative.last_name}"
     @years_old = Date.today.year - @representative.birth_date.year
     @laws = Law.all
+    @user = current_user
     scrapping
+  end
+
+  def user_request
+    @representative = Representative.find(params[:id])
+    @user = current_user
+    @message = params[:m]
+    @objet = params[:o]
+    UserMailer.with(user: @user, message: @message, objet: @objet, representative: @representative).request
+    redirect_to representative_path(@representative), :flash => { :notice => "Message envoyé !" }
   end
 
   def search

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      post :user_request
+    end
     resources :reprensatives_votes, only: [:new, :create]
   end
   resources :laws, only: [:index, :show] do
