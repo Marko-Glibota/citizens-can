@@ -31,7 +31,7 @@
             <%= comment.user.first_name.capitalize %>
             <%= comment.user.last_name.capitalize %>
           </p>
-            <i class="far fa-clock"> <%= comment.user.created_at.strftime('%d %B %Y - %H:%M')%> </i>
+            <i class="far fa-clock"> <%= I18n.l(comment.user.created_at, format: '%d %B %Y - %H:%M', locale: :fr) %> </i>
             <div class="forum-content">
               <%= comment.content %>
             </div>
