@@ -14,6 +14,8 @@ $blue: #2F3CAE;
   grid-row: 1 / 4;
   position: sticky;
   top: 10px;
+  display: flex;
+  flex-direction: column;
   .district-num-name {
     display: flex;
     flex-direction: column;
@@ -283,6 +285,10 @@ p {
 .absolute {
   position: absolute;
   top: 62px;
+}
+
+.party-acronym {
+  
 }
 
 // #myChart {

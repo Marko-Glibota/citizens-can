@@ -1,13 +1,11 @@
   <div class="grid-depute">
     <div class="card-depute-photo">
       <div class= "card-show-representative">
-        <div class="d-flex flex-row justify-content-start align-items-start p-3">
           <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
           <div class="district-num-name text-left pl-3">
-            <h3 class="pt-0 black"><%= @name %></h3>
-            <div class="my-4">
+            <h3 class="pt-0 mt-4 black text-center"><%= @name %></h3>
+            <div class="my-4 d-flex justify-content-between">
               <p class="mb-0 mt-1"><%= @representative.party_acronym %></p>
-              <p class="mb-0 mt-1"><%= @representative.department_name %></p>
               <p class="mb-0 mt-1">
                 <%= @representative.district_num %>
                 <% if @representative.district_num == 1  %>
@@ -17,10 +15,10 @@
                 <% else %>
                   ème
                 <% end %>
+                circonscription de <%= @representative.department_name %>
               </p>
             </div>
           </div>
-        </div>
         <div class="d-flex flex-column justify-content-start text-left pl-3">
           <div class="d-flex">
             <p  class="mt-0 mb-0 black">Place dans l'hémicycle</p>
