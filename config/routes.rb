@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   end
   resources :laws, only: [:index, :show] do
     member do
-      put "for" => "laws#for"
-      put "against" => "laws#against"
+      get "for" => "laws#for"
+      get "against" => "laws#against"
     end
     resources :comments, only: [:create]
     resources :users_votes, only: [:new, :create]
