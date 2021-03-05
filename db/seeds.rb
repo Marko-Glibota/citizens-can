@@ -119,20 +119,20 @@ doc.search('.liens-liste > li').first(30).each do |law|
   html_file = open(details).read
   doc = Nokogiri::HTML(html_file)
 
-  doc.search('.carrousel-auteurs-rapporteurs').each do |law|
+  doc.search('.carrousel-auteurs-rapporteurs').first(1).each do |law|
     auteur_link = law.search('.nom-personne a').attribute('href').value
     auteur_id = auteur_link.match(/PA\d+/)[0] if auteur_link.match(/PA\d+/)
     auteur_name = law.search('.nom-personne a').text
 
     if creation_date != nil
-      img_array = []
-      img_array << "../../app/assets/images/vignette1.png"
-      img_array << "../../app/assets/images/vignette2.png"
-      img_array << "../../app/assets/images/vignette3.png"
-      img_array << "../../app/assets/images/vignette4.png"
-      img_array << "../../app/assets/images/vignette5.png"
-      img_array << "../../app/assets/images/vignette6.png"
-      img_array << "../../app/assets/images/vignette7.png"
+      # img_array = []
+      # img_array << "../../images/vignette1.png"
+      # img_array << "../images/vignette2.png"
+      # img_array << "../images/vignette3.png"
+      # img_array << "../images/vignette4.png"
+      # img_array << "../images/vignette5.png"
+      # img_array << "../images/vignette6.png"
+      # img_array << "images/vignette7.png"
 
       law_creation = Law.new(
         num: num,
@@ -144,7 +144,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: auteur_name,
         id_an: auteur_id,
         date: creation_date,
-        photo: img_array.sample,
+        photo: "vignette#{rand(1..7)}",
         # representative_id: Representative.where(id_an: law_creation.id_an)
       )
       law_creation.save!
@@ -184,21 +184,19 @@ doc.search('.liens-liste > li').first(30).each do |law|
 
   html_file = open(details).read
   doc = Nokogiri::HTML(html_file)
-
-  doc.search('.carrousel-auteurs-rapporteurs').each do |law|
+  doc.search('.carrousel-auteurs-rapporteurs').first(1).each do |law|
     rapporteur_link = law.search('.nom-personne a').attribute('href').value
     rapporteur_id = rapporteur_link.match(/PA\d+/)[2] if rapporteur_link.match(/PA\d+/)
     rapporteur_name = law.search('.nom-personne a').text
-
     if creation_date != nil
-      img_array = []
-      img_array << "../../app/assets/images/vignette1.png"
-      img_array << "../../app/assets/images/vignette2.png"
-      img_array << "../../app/assets/images/vignette3.png"
-      img_array << "../../app/assets/images/vignette4.png"
-      img_array << "../../app/assets/images/vignette5.png"
-      img_array << "../../app/assets/images/vignette6.png"
-      img_array << "../../app/assets/images/vignette7.png"
+      # img_array = []
+      # img_array << "images/vignette1.png"
+      # img_array << "images/vignette2.png"
+      # img_array << "images/vignette3.png"
+      # img_array << "images/vignette4.png"
+      # img_array << "images/vignette5.png"
+      # img_array << "images/vignette6.png"
+      # img_array << "images/vignette7.png"
 
       @representatives = Representative.all
       law_creation = Law.new(
@@ -211,11 +209,14 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: rapporteur_name,
         id_an: rapporteur_id,
         date: creation_date,
-        photo: img_array.sample,
+        photo: "vignette#{rand(1..7)}",
         # representative_id: Representatives.where(id_an == law_creation.id_an)
         )
+      puts "Law #{law_creation.num} - #{law_creation.title}"
       law_creation.save!
     end
   end
+
+  # Save here
 end
 
