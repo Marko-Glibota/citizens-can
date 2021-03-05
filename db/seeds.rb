@@ -144,7 +144,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: auteur_name,
         id_an: auteur_id,
         date: creation_date,
-        photo: "vignette#{rand(1..7)}",
+        photo: "vignette#{rand(1..7)}.png",
         # representative_id: Representative.where(id_an: law_creation.id_an)
       )
       law_creation.save!
@@ -209,7 +209,7 @@ doc.search('.liens-liste > li').first(30).each do |law|
         author: rapporteur_name,
         id_an: rapporteur_id,
         date: creation_date,
-        photo: "vignette#{rand(1..7)}",
+        photo: "vignette#{rand(1..7)}.png",
         # representative_id: Representatives.where(id_an == law_creation.id_an)
         )
       puts "Law #{law_creation.num} - #{law_creation.title}"
