@@ -7,6 +7,7 @@ $blue: #2F3CAE;
   grid-gap: 30px 0px;
   grid-auto-rows: minmax(100px, auto);
   grid-auto-columns: minmax(100px, auto);
+  padding: 25px;
 }
 
 .card-depute-photo {
@@ -44,6 +45,15 @@ $blue: #2F3CAE;
 .stats-important {
   grid-column: 2 / 4;
   grid-row: 1 / 3;
+  align-items: center;
+  .card-show-representative {
+    border: none;
+    box-shadow: none;
+    h2 {
+      color: $blue; 
+      font-weight: 700;
+    }
+  }
 }
 
 
@@ -69,16 +79,21 @@ $blue: #2F3CAE;
 .card-presence_an {
   grid-column: 2;
   grid-row: 3 / 4;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .chart {
-    margin-top: 70px;
+    margin-top: 30px;
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 30px;
     // height: 100%;
   }
   .pourcentage {
-    padding: 30px;
-    margin: 10px;
+    padding: 0 30px;
+    margin: 0 10px;
     h4 {
       line-height: 28px;
     }
@@ -91,9 +106,6 @@ $blue: #2F3CAE;
 .card-propositions {
   grid-column: 3;
   grid-row: 1;
-  .chart-rectangle {
-    max-width: 300px;
-  }
   .precisions-chart-rectangle {
     position: relative;
     p {
@@ -106,8 +118,16 @@ $blue: #2F3CAE;
   grid-column: 3;
   grid-row: 3 / 4;
   .card-show-representative {
-    max-width: 300px;
+    max-width: 354px;
+    .chart {
+      margin-top: 30px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 30px;
+    }
     h4 {
+      color: black;
     }
     .precisions-chart-rectangle {
       p {
@@ -124,19 +144,22 @@ $blue: #2F3CAE;
 .card-missions {
   grid-column: 2 / 4;
   grid-row: 4 / 6;
-  h4 {
-    margin-bottom: 30px;
-  }
-  ul {
-    list-style: none;
-  }
-  .precisions-missions {
-    position: relative;
-    p {
-      font-size: 12px !important;
-      position: absolute;
-      bottom: 10px;
-      left: 485px;
+  .card-show-representative {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h4 {
+      margin-bottom: 30px;
+    }
+    ul {
+      list-style: none;
+    }
+    .precisions-missions {
+      display: flex;
+      justify-content: flex-end;
+      p {
+        font-size: 12px !important;
+      }
     }
   }
 }
@@ -282,9 +305,39 @@ margin-right: 25px;
 h3 {
   margin-bottom: 40px;
   margin-right: 15px;
-}
+  }
 }
 
+.chart {
+  margin-top: 70px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.margin-top-43 {
+margin-top: 43px;
+}
+
+.fs-60 {
+  font-size: 60px;
+}
+
+.dark-grey {
+  color: #23274a;
+}
+
+.card-depute-photo .card-show-representative .fas {
+  color: #1f1e1e;
+  font-size: 16px;
+  border: none;
+  padding: 0;
+}
+
+.card-depute-photo .card-show-representative a {
+  font-size: 14px;
+  font-family: "Open Sans";
+}
 // #myChart {
 //   height: 20%;
 //   width: 20%;

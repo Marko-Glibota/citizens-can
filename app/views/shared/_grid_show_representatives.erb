@@ -1,38 +1,33 @@
   <div class="grid-depute">
     <div class="card-depute-photo">
       <div class= "card-show-representative">
-        <div class="d-flex flex-column justify-content-center align-items-center p-3">
+        <div class="d-flex flex-column justify-content-center align-items-center pt-3">
           <%= image_tag "https://www.nosdeputes.fr/depute/photo/#{@representative.slug}/250", alt: "Photo député", width: 150, class: "img-photo" %>
-          <h3 class="pt-0 black"><%= @name %></h3>
-          <div class="district-num-name text-left pl-3">
-            <div class="my-4">
-              <p class="mb-0 mt-1"><%= @representative.party_acronym %></p>
-              <p class="mb-0 mt-1">
-                <%= @representative.district_num %>
-                <% if @representative.district_num == 1  %>
-                  ère
-                <% elsif @representative.district_num == 2 %>
-                  nd
-                <% else %>
-                  ème
-                <% end %>
-              </p>
-              <p class="mb-0 mt-1"><%= @representative.department_name %></p>
-               <h4 class="black">Déclaration d'intérêts</h4>
-            </div>
-          </div>
+          <h3 class="pt-0 mt-2 black"><%= @name %></h3>
+            <p class="mb-0 mt-1 black"><%= @representative.party_acronym %></p>
+            <p class="mb-0 mt-1 black">
+              <%= @representative.district_num %>
+              <% if @representative.district_num == 1  %>
+              ère
+              <% elsif @representative.district_num == 2 %>
+              nd
+              <% else %>
+              ème
+              <% end %>
+              circonscription - <%= @representative.department_name %></p>
         </div>
-        <div class="d-flex flex-column justify-content-start text-left pl-3">
+        <div class="d-flex flex-column justify-content-start text-left pl-3 mt-4">
           <div class="d-flex">
-            <p  class="mt-0 mb-0 black">Place dans l'hémicycle</p>
-            <p class="mt-0 mb-0">:      N°<%= @representative.seat_number %></p> 
+            <p  class="mt-0 mb-0 mr-1">Place dans l'hémicycle :</p>
+            <p class="mt-0 mb-0 black"> N°<%= @representative.seat_number %></p> 
           </div>
           <div class="d-flex">
-            <p class="mt-0 mb-0 black">Nombre de mandats cumulés  </p>
-            <p class="mt-0 mb-0">:      <%= @depute_nb_mandats %></p>
+            <p class="mt-0 mb-0 mr-1">Nombre de mandats cumulés :  </p>
+            <p class="mt-0 mb-0 black"> <%= @depute_nb_mandats %></p>
           </div>
         </div>
-        <div class="d-flex flex-column text-left mt-2 pl-3">
+        <a class="black my-4 d-block text-left pl-3" href=""><i class="fas fa-search mr-2"></i>Lire la déclaration d'intérêt</a>
+        <div class="d-flex flex-column text-left mt-4 pl-3">
           <p class="m-0 black pb-2">Collaborateurs</p>
           <ul>
             <li><p><%= @representative.collaborators[0]  %></p></li>
@@ -43,21 +38,40 @@
             <li><p><%= @representative.collaborators[5] %></p></li>
           </ul>
         </div>
-        <a class="btn-blue" href="">Contacter</a>
       </div>
     </div>
     <div class="stats-important">
+      <div class="card-show-representative align-items-center">
+        <div class="d-flex justify-content-between">
+          <div class="text-center">
+            <h2 class="mb-2 fs-60 "><%= @depute_amendements_proposes %></h2>
+            <p>amendements <br> proposés</p>
+          </div>
+          <div class="text-center">
+            <h2 class="mb-2 fs-60"><%= @depute_amendements_signes %></h2>
+            <p>amendements <br>signés</p>
+          </div>
+          <div class="text-center">
+            <h2 class="mb-2 fs-60"><%= @depute_questions_ecrites %></h2>
+            <p>questions <br> écrites</p>
+          </div>
+          <div class="text-center">
+            <h2 class="mb-2 fs-60"><%= @depute_question_orales %></h2>
+            <p>questions <br> orales</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="card-presence_an">
       <div class= "card-show-representative d-flex flex-column justify-content-between">
         <div>
-          <h4 class="pt-3 black">Présence dans l'hémicycle</h4>
+          <h4 class="black">Présence dans l'hémicycle</h4>
           <div class="chart">
             <canvas id="myChart" data-presence="<%= @depute_semaines_presence %>" width="200" height="100"></canvas>
             <% pourcentage_presence = @depute_semaines_presence * 100 / 52 %>
           </div>
           <div class="pourcentage">
-            <h4 class="black"><%= pourcentage_presence %>% de présence à l'Assemblée</h4>
+            <h2 class="dark-grey"><%= pourcentage_presence %>%</h2><p> de présence à l'Assemblée</p>
           </div>
          </div>
           <p class="infos-stats"><I>* Nombre de semaines où le député a été relevé présent dans l'hémicycle sur les 12 derniers mois</I></p>
@@ -67,10 +81,20 @@
     </div>
     <div class="card-amendements-questions">
       <div class= "card-show-representative d-flex flex-column justify-content-between">
-        <h4>Propositions du député</h4>
         <div>
-          <div class="chart-rectangle">
-            <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+          <h4>Propositions du député</h4>
+          <div>
+            <div class="chart">
+              <canvas id="myBarChart" data-deposees="<%= @depute_propositions_ecrites %>" data-signees="<%= @depute_propositions_signees %>"></canvas>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <h2 class="dark-grey"><%= @depute_propositions_ecrites %></h2><p>propositions écrites</p>
+              </div>
+              <div>
+                <h2 class="dark-grey"><%= @depute_propositions_signees %></h2><p>propositions signées</p>
+              </div>
+            </div>
           </div>
         </div>
           <p class="infos-stats"><I>* Nombre de proposition des 12 derniers mois</I></p>
@@ -78,36 +102,37 @@
     </div>
     <div class="card-missions">
       <div class= "card-show-representative">
-        <h4 class="black">Missions en cours</h4>
-        <ul class="text-left mb-0 ml-0">
-          <% @infos_perso_depute.first(2).each do |responsabilite| %>
-            <li>
-              <p>
-                <%= responsabilite["responsabilite"]["organisme"] %>
-                ( <strong><%= responsabilite["responsabilite"]["fonction"].capitalize %></strong> depuis le <I><%= responsabilite["responsabilite"]["debut_fonction"] %></I> ) 
-              </p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="precisions-missions"> 
-        <p class="infos-stats"><I>* Toutes les missions encore en cours sur l'année 2021</I></p>
+        <div class="d-flex flex-column justify-content-between">
+          <h4 class="black">Missions en cours</h4>
+          <ul class="text-left mb-0 ml-0">
+            <% @infos_perso_depute.first(2).each do |responsabilite| %>
+              <li>
+                <p>
+                  <%= responsabilite["responsabilite"]["organisme"] %>
+                  ( <strong><%= responsabilite["responsabilite"]["fonction"].capitalize %></strong> depuis le <I><%= responsabilite["responsabilite"]["debut_fonction"] %></I> ) 
+                </p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="precisions-missions"> 
+          <p class="infos-stats"><I>* Toutes les missions encore en cours sur l'année 2021</I></p>
+        </div>
       </div>
     </div>
     <div class="contact_container">
       <div class="contact_form flex-column">
-        <div class="d-flex justify-content-center mb-4">
-          <h3 class="black">Contacter votre député</h3>
+        <div class="d-flex justify-content-center mb-5">
+          <h4 class="black">Contacte ton député</h4>
         </div>
         <div class="d-flex justify-content-start">
           <div class="information-contact">
-            <h3>Informations de contact</h3>
+            <p><strong>Informations de contact</strong></p>
             <p><i class="fas fa-envelope"></i> <%= @representative.email %></p>
             <p><i class="fas fa-phone-alt"></i> 05 62 68 09 55</p>
-            <hr>
           </div>
           <div>
-            <h3 class="margin-b-40">Envoyer un message à <%= @representative.first_name %> <%= @representative.last_name %></h3>
+            <p class="margin-b-40"><strong>Envoyer un message à <%= @representative.first_name %> <%= @representative.last_name %></strong></p>
             <%= render 'shared/rep_contact_form' %>
           </div>
         </div>
