@@ -5,11 +5,11 @@
       <p>Application de vote citoyen pour une démocratie<br>directe & participative</p>
       <%= render 'shared/search_bar_representatives' %>
     </div>
-    <a href="#section1" id="scroll-button"><i  class="fas fa-arrow-circle-down"></i></a>
+    <a href="#presentation" id="scroll-button"><i  class="fas fa-arrow-circle-down"></i></a>
     <%= image_tag 'banner.png', alt: "illustration Citizens", class: "illustration" %>
 </div>
 
-<div class="container" id="section1">
+<div class="container" id="presentation">
   <h2 class="title-2 ">Reprends le pouvoir</h2>
   <div class="presentation">
     <div class="card-feature">
@@ -31,7 +31,7 @@
       <% if user_signed_in? %>
         <%= link_to "Voir mon député", representative_path(current_user.district.representative), class: 'btn-orange' %>
       <% else %>
-        <a href="#" class="btn-orange">Fais ton Etape II!</a>
+        <a href="http://www.citizens-can.com/users/sign_in" class="btn-orange">Se connecter</a>
       <% end %>
     </div>
   </div>
@@ -50,7 +50,7 @@
 
     <!-- Deuxième ligne -->
     <div class="w-50 p-5 my-3">
-      <img src="https://images.unsplash.com/photo-1612922495634-41cc15c199d3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="" class="w-100 h-300px radius-10px object-fit-cover">
+      <%= image_tag 'echanger.png', alt: "illustration echanger", class: "w-100 h-300px radius-10px object-fit-cover" %>
     </div>
     <div class="w-50 p-5 my-3">
       <h3 class="title-3">Echanger</h3>
@@ -65,7 +65,7 @@
       <p>Tu peux également interpeller ton député et lui envoyer facilement des messages afin de recréer un lien entre les députés et les citoyennes et citoyens qu'ils représentent.</p>
     </div>
     <div class="w-50 p-5 my-3">
-      <img src="https://img.lemde.fr/2019/10/06/168/0/3500/1750/1600/800/60/0/5cec1f1_GDN06_FRANCE-REFORM-IVF-PROTEST_1006_11.JPG" alt="" class="w-100 h-300px radius-10px object-fit-cover">
+      <%= image_tag 'agir.png', alt: "illustration echanger", class: "w-100 h-300px radius-10px object-fit-cover" %>
     </div>
 
   </div>
