@@ -31,7 +31,7 @@
       <% if user_signed_in? %>
         <%= link_to "Voir mon député", representative_path(current_user.district.representative), class: 'btn-orange' %>
       <% else %>
-        <a href="#" class="btn-orange">Fais ton Etape II!</a>
+        <a href="http://www.citizens-can.com/users/sign_in" class="btn-orange">Se connecter</a>
       <% end %>
     </div>
   </div>
