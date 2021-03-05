@@ -11,14 +11,11 @@
 
 .card-rep img {
     border-radius: 5px 5px 0px 0px;
+    margin-bottom: 2px;
   }
 
-.card-rep h4 {
-    padding-left: 5px;
-  }
-
-.card-rep p {
-    padding-left: 5px;
-    padding-bottom: 0px;
+.card-rep h4, .card-rep p {
+  padding: 0px 0px 0px 5px;
+  margin-top: 0px;
   }
 

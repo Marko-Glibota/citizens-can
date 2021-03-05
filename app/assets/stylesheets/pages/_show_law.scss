@@ -29,11 +29,20 @@
 
 .law-author {
   display: flex;
+  align-items: center;
   margin-top: 12px;
+}
+
+.law-author p {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .law-author a {
   display: inline-block;
+  font-size: 14px;
+  color: #3535AD;
+  font-weight: bold;
 }
 
 .sign-in-to-com {

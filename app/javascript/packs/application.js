@@ -26,11 +26,14 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import $ from 'jquery'
 
 // Internal imports, e.g:
 import { initPlaces } from '../components/init_places';
 import { initChart } from '../components/chart';
 import { initBarChart } from '../components/bar_chart';
+
+window.$ = $
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
