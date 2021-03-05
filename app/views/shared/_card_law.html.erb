@@ -1,6 +1,6 @@
 <%= link_to law_path(law) do %>
   <div class="card-law">
-    <img src=<%=law.photo%>>
+    <%= image_tag law.photo, alt: "alttext" %>
     <div class="card-law-infos">
       <div>
         <h4><%= law.title %></h4>
