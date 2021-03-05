@@ -9,9 +9,9 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    height: 80vh;
   }
 }
-
 .banner_home p {
   color: #fff;
   font-size: 20px;
@@ -20,8 +20,13 @@
 .tagline {
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 70px;
 }
 
+.tagline p {
+  margin-left: 10px;
+  margin-bottom: 35px;
+}
 
 .fa-arrow-circle-down {
   font-size: 50px;
